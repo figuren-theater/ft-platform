@@ -22,39 +22,16 @@
         "issues": "https://github.com/figuren-theater/ft-plattform/issues",
         "source": "https://github.com/figuren-theater/ft-plattform"
     },
-	"autoload": {
-		"files": [
-			"inc/.../namespace.php",
-			"inc/namespace.php"
-		],
-        "classmap": [
-            "inc/"
-        ]
-	},
 	"repositories": [
 		{
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-options"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/..."
-        },
-		{
-			"type": "composer",
-			"url" : "https://wpackagist.org"
-		}
+            "url": "https://github.com/figuren-theater/ft-core"
+        }
 	],
 	"require": {
         "php": ">=7.1",
-        "figuren-theater/ft-options": "^1"
+        "figuren-theater/ft-core": "^1"
 	},
-    "extra": {
-        "altis": {
-            "install-overrides": [
-            ]
-        }
-    },
 	"config": {
 		"allow-plugins": {
 			"composer/installers": true
