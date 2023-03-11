@@ -1,0 +1,39 @@
+# With this workflow, whenever you publish a new release, 
+# GitHub will trigger the workflow and run the deploy job, 
+# which will install the dependencies, build the project, 
+# and deploy the new or updated files to the remote server.
+
+name: Release Deploy Workflow
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/files
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install dependencies
+        run: composer install --no-dev --prefer-dist --no-interaction --no-suggest
+
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@5.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: # add the path to the built files here
+          remote-dir: # add the path to the FTP server directory here
+          args: -n -e "mirror --reverse --only-newer --delete ${{ github.workspace }}/${{ env.DEPLOY_DIRECTORY }} /remote/path"
+        env:
+          DEPLOY_DIRECTORY: # add the name of the directory containing the built files here
