@@ -24,11 +24,8 @@ jobs:
           path: ~/.composer/cache/files
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
 
-      - name: Install composer plugins
-        run: composer install figuren-theater/altis-core --no-dev --prefer-dist --no-interaction
-
       - name: Install dependencies
-        run: composer install --no-dev --prefer-dist --no-interaction
+        run: composer install --no-dev --prefer-dist --no-interaction -vv
         
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
