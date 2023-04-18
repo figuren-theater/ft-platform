@@ -207,6 +207,8 @@
     },
     "require": {
         "php": ">=8.0.19",
+        "figuren-theater/ft-admin-ui": "^1.0",
+        "figuren-theater/ft-core": "^1",
         "johnpbloch/wordpress": "^6.1.1"
     },
     "provide": {
