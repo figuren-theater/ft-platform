@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: ./TEST_deploy_bzuz3kju67/
-          args: -n -e "mirror --reverse --only-newer --delete ${{ github.workspace }}/${{ env.DEPLOY_DIRECTORY }} ./TEST_deploy_bzuz3kju67"
+          server-dir: ./
+          args: -n -e "mirror --reverse --only-newer --delete ${{ github.workspace }}/${{ env.DEPLOY_DIRECTORY }} ./"
         env:
           DEPLOY_DIRECTORY: ./
