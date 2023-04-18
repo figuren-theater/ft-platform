@@ -33,8 +33,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: ./
-          args: -n -e "mirror --reverse --only-newer --delete ${{ github.workspace }}/${{ env.DEPLOY_DIRECTORY }} ./"
-        env:
-          DEPLOY_DIRECTORY: ./
+          protocol: ftpes
+          port: 21 # todo replace with your web hosts ftps port
