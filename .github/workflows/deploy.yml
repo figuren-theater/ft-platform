@@ -6,6 +6,7 @@
 name: Release Deploy Workflow
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
@@ -32,8 +33,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: # add the path to the built files here
-          remote-dir: # add the path to the FTP server directory here
-          args: -n -e "mirror --reverse --only-newer --delete ${{ github.workspace }}/${{ env.DEPLOY_DIRECTORY }} /remote/path"
+          local-dir: ./
+          server-dir: ./TEST_deploy_bzuz3kju67/
+          args: -n -e "mirror --reverse --only-newer --delete ${{ github.workspace }}/${{ env.DEPLOY_DIRECTORY }} ./TEST_deploy_bzuz3kju67"
         env:
-          DEPLOY_DIRECTORY: # add the name of the directory containing the built files here
+          DEPLOY_DIRECTORY: ./
