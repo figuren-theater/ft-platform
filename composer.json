@@ -209,6 +209,8 @@
         "php": ">=8.0.19",
         "figuren-theater/ft-admin-ui": "^1.0",
         "figuren-theater/ft-core": "^1",
+        "figuren-theater/ft-theming": "^1.0",
+        "inpsyde/wp-translation-downloader": "^2.3",
         "johnpbloch/wordpress": "^6.1.1"
     },
     "provide": {
