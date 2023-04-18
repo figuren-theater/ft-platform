@@ -1,9 +1,9 @@
 {
-	"name": "figuren-theater/ft-plattform",
-	"description": "... like the figuren.theater WordPress Multisite network.",
+    "name": "figuren-theater/ft-platform",
+    "description": "figuren.theater platform",
+    "type": "project",
     "homepage": "https://websites.fuer.figuren.theater",
-    "type": "wordpress-muplugin",
-    "keywords": ["wordpress", "wordpress-muplugin"],
+    "keywords": ["wordpress", "multisite"],
     "license": "GPL-3.0-or-later",
     "authors": [
         {
@@ -19,22 +19,197 @@
     ],
     "support": {
         "email": "info@figuren.theater",
-        "issues": "https://github.com/figuren-theater/ft-plattform/issues",
-        "source": "https://github.com/figuren-theater/ft-plattform"
+        "issues": "https://github.com/figuren-theater/ft-platform/issues",
+        "source": "https://github.com/figuren-theater/ft-platform"
     },
-	"repositories": [
-		{
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/carstingaxion/cbstdsys-post-subtitle"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/carstingaxion/feed-pull"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/carstingaxion/shadow-taxonomy"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/carstingaxion/WP-Super-Preload"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/altis-core"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-admin-ui"
+        },
+        {
             "type": "git",
             "url": "https://github.com/figuren-theater/ft-core"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-core-block-domaincheck"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-data"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-interactive"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-maintenance"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-media"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-network-block-patterns"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-network-sourcelinks"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-onboarding"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/install.php"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-options"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-performance"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-privacy"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-routes"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-security"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-seo"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-site-editing"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-network-block-editor"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-themes"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-theming"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/hrsetyono/wp-sync-db"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/10up/distributor"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/humanmade/hm-utility-taxonomy"
+        },
+        {
+            "type": "composer",
+            "url" : "https://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.org"
         }
-	],
-	"require": {
-        "php": ">=7.1",
-        "figuren-theater/ft-core": "^1"
-	},
-	"config": {
-		"allow-plugins": {
-			"composer/installers": true
-		}
-	}
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "extra": {
+        "wordpress-install-dir": "wp",
+        "installer-paths": {
+            "content/plugins/{$name}": ["type:wordpress-plugin"],
+            "content/parent-themes/{$name}": ["type:wordpress-theme"],
+            "content/mu-plugins/FT/{$name}": [
+                "vendor:figuren-theater"
+            ],
+            "content/mu-plugins/{$name}": ["type:wordpress-muplugin"],
+            "wp": ["type:wordpress-core"]
+        },
+        "dropin-paths": {
+            "content": [
+                "package:figuren-theater/ft-privacy:inc/koko-analytics/k.php",
+                "package:figuren-theater/ft-routes:templates/htdocs/wp-content/sunrise.php",
+                "package:figuren-theater/ft-maintenance:templates/htdocs/wp-content/db-error.php",
+                "package:figuren-theater/ft-maintenance:templates/htdocs/wp-content/maintenance.php",
+                "package:figuren-theater/ft-maintenance:templates/htdocs/wp-content/php-error.php",
+                "package:figuren-theater/install.php:install.php",
+                "package:wpackagist-plugin/sqlite-object-cache:assets/drop-in/object-cache.php",
+                "type:wordpress-dropin"
+            ],
+            "content/mu-plugins": [
+                "package:figuren-theater/ft-core:templates/htdocs/wp-content/mu-plugins/must-use-loader.php"
+            ],
+            "vendor/rss-bridge/rss-bridge": [
+                "package:figuren-theater/ft-data:templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt",
+                "package:figuren-theater/ft-data:templates/htdocs/vendor/rss-bridge/rss-bridge/config.ini.php"
+            ]
+        },
+        "wp-translation-downloader": {
+            "languages": [
+                "de_AT",
+                "de_CH",
+                "de_CH_informal",
+                "de_DE",
+                "de_DE_formal"
+            ],
+            "languageRootDir": "content/languages"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "johnpbloch/wordpress-core-installer": true,
+            "composer/installers": true,
+            "figuren-theater/*": true,
+            "altis/*": true,
+            "koodimonni/composer-dropin-installer": true,
+            "inpsyde/wp-translation-downloader": true
+        }
+    },
+    "require": {
+        "php": ">=8.0.19",
+        "johnpbloch/wordpress": "^6.1.1"
+    },
+    "provide": {
+        "georgestephanis/application-passwords": "*"
+    }
 }
