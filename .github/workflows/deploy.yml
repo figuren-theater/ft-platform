@@ -27,8 +27,8 @@ jobs:
       - name: Install composer plugin
         run: composer require --prefer-dist --no-interaction -vv figuren-theater/altis-core
         
-      - name: Install dependencies
-        run: composer install --no-dev --prefer-dist --no-interaction -vv
+     # - name: Install dependencies
+     #   run: composer install --no-dev --prefer-dist --no-interaction -vv
         
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
