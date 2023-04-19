@@ -63,4 +63,6 @@ jobs:
             **/node_modules/**
             **/wp-content/**
             **/.editorconfig
+            # figuren-theater/ft-theming/wp-better-emails --> Error: Error: Server sent FIN packet unexpectedly ...
+            **/wp-better-emails/preview.html
             
