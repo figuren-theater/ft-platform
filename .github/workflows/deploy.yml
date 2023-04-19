@@ -23,7 +23,10 @@ jobs:
         with:
           path: ~/.composer/cache/files
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
-
+  
+      - name: Install composer plugin
+        run: composer require --no-dev --prefer-dist --no-interaction -vv figuren-theater/altis-core
+        
       - name: Install dependencies
         run: composer install --no-dev --prefer-dist --no-interaction -vv
         
