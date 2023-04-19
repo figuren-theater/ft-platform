@@ -26,9 +26,13 @@ jobs:
 
       - name: Install composer dependencies
         run: composer install --no-dev --prefer-dist --no-interaction -vv
-  
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Install all other dependencies
         run: composer require --no-interaction -vv figuren-theater/ft-platform-curation:dev-main
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
