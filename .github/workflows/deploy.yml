@@ -28,7 +28,7 @@ jobs:
         run: composer install --no-dev --prefer-dist --no-interaction -vv
   
       - name: Install all other dependencies
-        run: composer require --prefer-dist --no-interaction -vv figuren-theater/ft-platform-curation
+        run: composer require --no-interaction -vv figuren-theater/ft-platform-curation:dev-main
                 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
