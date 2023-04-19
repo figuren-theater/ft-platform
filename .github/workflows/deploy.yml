@@ -44,8 +44,6 @@ jobs:
 
       - name: Install all other dependencies
         run: composer require -W figuren-theater/ft-platform-curation:dev-main
-        env:
-          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
