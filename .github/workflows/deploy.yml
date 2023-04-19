@@ -23,13 +23,13 @@ jobs:
         with:
           path: ~/.composer/cache/files
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install composer dependencies
+        run: composer install --no-dev --prefer-dist --no-interaction -vv
   
-      - name: Install composer plugin
-        run: composer require --prefer-dist --no-interaction -vv figuren-theater/altis-core
-        
-     # - name: Install dependencies
-     #   run: composer install --no-dev --prefer-dist --no-interaction -vv
-        
+      - name: Install all other dependencies
+        run: composer require --prefer-dist --no-interaction -vv figuren-theater/ft-platform-curation
+                
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
