@@ -25,12 +25,12 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
 
       - name: Install composer dependencies
-        run: composer install --no-dev --prefer-dist --no-interaction -vv
+        run: composer install --no-dev --prefer-dist --no-interaction
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Install all other dependencies
-        run: composer require --no-interaction -vv figuren-theater/ft-platform-curation:dev-main
+        run: composer require --no-interaction figuren-theater/ft-platform-curation:dev-main
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 
@@ -42,4 +42,11 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          timeout: 180000
+          timeout: 180000 # 3 min
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/wp-content/**
+            **/.editorconfig
+            
