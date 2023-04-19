@@ -36,7 +36,10 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-
+      
+      - name: Prepare auth Token
+        run: composer global config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+        
       - name: Install composer dependencies
         run: composer install --no-dev --prefer-dist --no-interaction
         env:
