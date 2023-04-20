@@ -61,7 +61,8 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
-            **/wp-content/**
+            **/wp-content/plugins/**
+            **/wp-content/themes/**
             **/.editorconfig
             # figuren-theater/ft-theming/wp-better-emails --> Error: Error: Server sent FIN packet unexpectedly ...
             **/wp-better-emails/preview.html
