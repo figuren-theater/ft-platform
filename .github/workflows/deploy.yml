@@ -66,4 +66,6 @@ jobs:
             **/.editorconfig
             # figuren-theater/ft-theming/wp-better-emails --> Error: Error: Server sent FIN packet unexpectedly ...
             **/wp-better-emails/preview.html
+            # figuren-theater/ft-data/distributor --> Error: Error: Server sent FIN packet unexpectedly ...
+            **/distributor/lang/distributor.pot
             
