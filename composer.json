@@ -180,7 +180,9 @@
                 "package:figuren-theater/ft-core:templates/htdocs/wp-content/mu-plugins/must-use-loader.php"
             ],
             "vendor/rss-bridge/rss-bridge": [
-                "package:figuren-theater/ft-data:templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt",
+                "package:figuren-theater/ft-data:templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt"
+            ],
+            "vendor/rss-bridge/rss-bridge": [
                 "package:figuren-theater/ft-data:templates/htdocs/vendor/rss-bridge/rss-bridge/config.ini.php"
             ]
         },
