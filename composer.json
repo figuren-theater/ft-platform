@@ -195,11 +195,6 @@
             "languageRootDir": "content/languages"
         }
     },
-    "scripts": {
-        "post-update-cmd": [
-            "cp content/mu-plugins/FT/ft-data/templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt vendor/rss-bridge/rss-bridge/whitelist.txt"
-        ]
-    },
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true,
