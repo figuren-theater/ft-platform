@@ -24,16 +24,17 @@ jobs:
   #        path: ~/.composer/cache/files
   #        key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
 
-      - name: Get Composer cache directory
-        id: composer-cache
-        run: |
-          echo "composer_dir={$(composer config cache-files-dir)}" >> $GITHUB_OUTPUT
+   #   - name: Get Composer cache directory
+   #     id: composer-cache
+   #     run: |
+   #       echo "composer_dir={$(composer config cache-files-dir)}" >> $GITHUB_OUTPUT
 
       - name: Retrieve Composer‘s cache
         uses: actions/cache@v3
         with:
-          path: ${{ steps.composer-cache.outputs.composer_dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          # path: ${{ steps.composer-cache.outputs.composer_dir }}
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/README.md') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       
@@ -64,6 +65,7 @@ jobs:
           port: 21
           timeout: 180000 # 3 min
           exclude: |
+            tmp
             **/.git*
             **/.git*/**
             **/node_modules/**
