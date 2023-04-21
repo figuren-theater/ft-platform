@@ -33,8 +33,8 @@ jobs:
         uses: actions/cache@v3
         with:
           # path: ${{ steps.composer-cache.outputs.composer_dir }}
-          path: /tmp/composer-cache
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/README.md') }}
+          path: /
+          key: ${{ runner.os }}-composer-${{ hashFiles('README.md') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       
