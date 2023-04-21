@@ -47,6 +47,12 @@ jobs:
 
       - name: Install all other dependencies
         run: composer require -W figuren-theater/ft-platform-curation:dev-main
+        
+      - name: Help moving files (which koodimoni/dropin-installer is not capable for, see #11)
+        run: |
+          cp content/mu-plugins/FT/ft-data/templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt vendor/rss-bridge/rss-bridge/whitelist.txt &&
+          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php
+ 
 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
