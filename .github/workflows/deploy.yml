@@ -48,7 +48,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/README.md') }}
           restore-keys: |
             ${{ runner.os }}-composer-      
 
@@ -65,7 +65,7 @@ jobs:
         run: |
           cp content/mu-plugins/FT/ft-data/templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt vendor/rss-bridge/rss-bridge/whitelist.txt &&
           cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/db-error.php content/db-error.php &&
-          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php &&
+          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php
  
 
       - name: Deploy
