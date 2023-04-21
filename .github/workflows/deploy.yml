@@ -17,7 +17,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+  
+      - name: Prepare auth Token
+        run: composer global config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+        
   #    - name: Cache dependencies
   #      uses: actions/cache@v2
   #      with:
@@ -29,18 +32,26 @@ jobs:
    #     run: |
    #       echo "composer_dir={$(composer config cache-files-dir)}" >> $GITHUB_OUTPUT
 
-      - name: Retrieve Composer‘s cache
-        uses: actions/cache@v3
+    #  - name: Retrieve Composer‘s cache
+    #    uses: actions/cache@v3
+    #    with:
+    #      # path: ${{ steps.composer-cache.outputs.composer_dir }}
+    #      path: /
+    #      key: ${{ runner.os }}-composer-${{ hashFiles('README.md') }}
+    #      restore-keys: |
+    #        ${{ runner.os }}-composer-
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
         with:
-          # path: ${{ steps.composer-cache.outputs.composer_dir }}
-          path: /
-          key: ${{ runner.os }}-composer-${{ hashFiles('README.md') }}
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-composer-
-      
-      - name: Prepare auth Token
-        run: composer global config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-        
+            ${{ runner.os }}-composer-      
+
       - name: Install composer dependencies
         run: composer install --no-dev --prefer-dist --no-interaction
         env:
@@ -49,10 +60,12 @@ jobs:
       - name: Install all other dependencies
         run: composer require -W figuren-theater/ft-platform-curation:dev-main
         
-      - name: Help moving files (which koodimoni/dropin-installer is not capable for, see #11)
+      # Help moving files (which koodimoni/dropin-installer is not capable for, see #11)
+      - name: Move files (accompanying koodimoni)
         run: |
           cp content/mu-plugins/FT/ft-data/templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt vendor/rss-bridge/rss-bridge/whitelist.txt &&
-          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php
+          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/db-error.php content/db-error.php &&
+          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php &&
  
 
       - name: Deploy
