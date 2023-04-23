@@ -177,14 +177,12 @@
     "extra": {
         "wordpress-install-dir": "wp",
         "installer-paths": {
-            "content": ["figuren-theater/websites.fuer.figuren.theater-demos"],
             "content/plugins/{$name}": ["type:wordpress-plugin"],
             "content/themes/twentytwentytwo-ft-core": ["figuren-theater/twentytwentytwo-ft-core"],
             "content/themes/twentytwentytwo-ft__katharina-muschiol": ["figuren-theater/twentytwentytwo-ft__katharina-muschiol"],
             "content/themes/figuren-theater": ["figuren-theater/twentytwenty-ft-core"],
             "content/parent-themes/{$name}": ["type:wordpress-theme"],
-            "content/mu-plugins/FT/{$name}": ["vendor:figuren-theater"],
-            "content/mu-plugins/{$name}": ["type:wordpress-muplugin"],
+            "content/mu-plugins/FT/{$name}": ["type:wordpress-muplugin"],
             "wp": ["type:wordpress-core"]
         },
         "dropin-paths": {
