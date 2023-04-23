@@ -1,0 +1,701 @@
+# ----------------------------------------------------------------------
+# Redirect All Web Traffic to HTTPS
+# ----------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  #
+  RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
+  # Redirect all http traffic to https
+  # Use the lexographically equal operator !=on. If you just use off it gets treated as a regex.
+  RewriteCond %{HTTPS} !=on 
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Suppress the "www." at the beginning of URLs
+# ----------------------------------------------------------------------
+
+# The same content should never be available under two different URLs - especially not with and
+# without "www." at the beginning, since this can cause SEO problems (duplicate content).
+# That's why you should choose one of the alternatives and redirect the other one.
+
+# By default option 1 (no "www.") is activated. Remember: Shorter URLs are sexier.
+# no-www.org/faq.php?q=class_b
+
+# If you rather want to use option 2, just comment out all option 1 lines
+# and uncomment option 2.
+# IMPORTANT: NEVER USE BOTH RULES AT THE SAME TIME!
+
+# ----------------------------------------------------------------------
+
+# Option 1:
+# Rewrite "www.domain.com -> domain.com"
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  #
+  RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
+  #
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+
+
+
+# BEGIN Figuren_Theater\Routes\Virtual_Uploads
+#----------------------------------------------------------------------
+# Handle upload_url redirects with custom URLs
+# based on __media
+#
+# "__media" is a ugly hardcoded virtual directory
+#
+# ... to help with proper rewrite rules for media below 
+# the prefered domainname of the currently viewed site.
+#
+# It is used and needs to be updated at the following locations:
+# - /.htaccess (automatically done)
+# - /content/mu-plugins/FT/ft-routes/inc/virtual-uploads/namespace.php
+# - /content/mu-plugins/Figuren_Theater/src/FeaturesRepo/UtilityFeature__managed_core_options.php
+#
+# The directives (lines) between 'BEGIN Figuren_Theater\Routes\Virtual_Uploads' and 'END Figuren_Theater\Routes\Virtual_Uploads' are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+#----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
+
+RewriteCond %{HTTP_HOST} ^meta\.figuren\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:4]
+
+RewriteCond %{HTTP_HOST} ^carstenbach\.puppen\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:103]
+
+RewriteCond %{HTTP_HOST} ^fuer\.figuren\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:102]
+
+RewriteCond %{HTTP_HOST} ^heute\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:101]
+
+RewriteCond %{HTTP_HOST} ^puppen\.(.*)$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^figuren\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:1]
+
+RewriteCond %{HTTP_HOST} ^developer\.figuren\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:45]
+
+RewriteCond %{HTTP_HOST} ^katharina-muschiol\.figuren\.(.*)$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^katharina-muschiol\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:14]
+
+RewriteCond %{HTTP_HOST} ^welttag\.puppen\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:13]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:12]
+
+RewriteCond %{HTTP_HOST} ^websites\.fuer\.figuren\.(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:5]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/poe/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:128]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/ert/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:114]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/fox/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:113]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/ulo/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:134]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/wwww/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:144]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/eins/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:141]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/web3/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:112]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/bonn/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:106]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/blarm/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:120]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/alexa/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:119]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/harry/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:123]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/alois/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:111]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/megga/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:135]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/koepe/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:107]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/zweee/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:140]
+
+RewriteCond %{HTTP_HOST} ^websites\.fuer\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/demo2/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:98]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/scuba/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:48]
+
+RewriteCond %{HTTP_HOST} ^websites\.fuer\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/demos/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:46]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/weiwei/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:130]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/angulf/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:137]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/alauna/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:147]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/miriam/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:143]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/iljaho/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:124]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/asimon/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:145]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/alarma/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:121]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/sqlite/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:96]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/balooo/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:117]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/akiika/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:116]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/sususu/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:105]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/walara/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:108]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/pipapo/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:109]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/conneee/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:122]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/anannlo/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:138]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/annicka/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:136]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/sampler/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:132]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/achimma/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:118]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/pendant/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:127]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/agathaa/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:126]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/antonia/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:125]
+
+RewriteCond %{HTTP_HOST} ^mein\.puppen\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/brifght/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:131]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/bertatoo/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:146]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/juuuuuko/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:115]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/useruser/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:142]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/eeeeeeeee/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:139]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/juliaraab/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:49]
+
+RewriteCond %{HTTP_HOST} ^websites\.fuer\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/demos/wei/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:100]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/avangggarde/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:129]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/schoenamita/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:133]
+
+RewriteCond %{HTTP_HOST} ^websites\.fuer\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/demo2/oaknut/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:99]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/multinetwork/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:97]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/peterpaulaugust/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:104]
+
+RewriteCond %{HTTP_HOST} ^mein\.figuren\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} ^/aaaaaaaaaaallloooooo/(.*)$ [NC]
+RewriteRule . - [E=FT_SITE_ID:110]
+
+RewriteCond %{REQUEST_URI} !/(__media)/$ [NC]
+RewriteCond %{REQUEST_URI} /__media/(.*)$ [NC]
+RewriteRule __media/(.*)$ content/uploads/sites/%{ENV:FT_SITE_ID}/$1 [L]
+</IfModule>
+# END Figuren_Theater\Routes\Virtual_Uploads
+
+
+# ----------------------------------------------------------------------
+# Proper MIME type for all files
+# ----------------------------------------------------------------------
+
+# audio
+AddType audio/ogg                      oga ogg
+
+# video
+AddType video/ogg                      ogv
+AddType video/mp4                      mp4
+AddType video/webm                     webm
+
+# Proper svg serving. Required for svg webfonts on iPad
+#   twitter.com/FontSquirrel/status/14855840545
+AddType     image/svg+xml              svg svgz
+AddEncoding gzip                       svgz
+
+# webfonts
+AddType application/vnd.ms-fontobject  eot
+AddType font/truetype                  ttf
+AddType font/opentype                  otf
+AddType application/x-font-woff        woff
+
+# assorted types
+AddType image/x-icon                   ico
+AddType image/webp                     webp
+AddType text/cache-manifest            appcache manifest
+AddType text/x-component               htc
+AddType application/x-chrome-extension crx
+AddType application/x-xpinstall        xpi
+AddType application/octet-stream       safariextz
+AddType text/x-vcard                   vcf
+
+
+# ----------------------------------------------------------------------
+# Expires headers (for better cache control)
+# ----------------------------------------------------------------------
+
+# these are pretty far-future expires headers
+# they assume you control versioning with cachebusting query params like
+#   <script src="application.js?20100608">
+# additionally, consider that outdated proxies may miscache
+#   www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
+
+# if you don't use filenames to version, lower the css and js to something like
+#   "access plus 1 week" or so
+
+#<IfModule mod_expires.c>
+#  ExpiresActive on
+
+# Perhaps better to whitelist expires rules? Perhaps.
+#  ExpiresDefault                          "access plus 1 month"
+
+# # cache.appcache needs re-requests in FF 3.6 (thx Remy ~Introducing HTML5)
+  # ExpiresByType text/cache-manifest       "access plus 0 seconds"
+
+# # your document html
+  # ExpiresByType text/html                 "access plus 0 seconds"
+
+# # # data
+   # ExpiresByType text/xml                  "access plus 0 seconds"
+#    ExpiresByType application/xml           "access plus 0 seconds"
+#    ExpiresByType application/json          "access plus 0 seconds"
+
+# # rss feed
+   # ExpiresByType application/rss+xml       "access plus 1 hour"
+
+# # favicon (cannot be renamed)
+  # ExpiresByType image/x-icon              "access plus 1 year"
+
+# media: images, video, audio
+  # ExpiresByType image/gif                 "access plus 1 year"
+  # ExpiresByType image/png                 "access plus 1 year"
+  # ExpiresByType image/jpg                 "access plus 1 year"
+  # ExpiresByType image/jpeg                "access plus 1 year"
+  # ExpiresByType image/webp                "access plus 1 year"
+  # ExpiresByType video/ogg                 "access plus 1 year"
+  # ExpiresByType audio/ogg                 "access plus 1 year"
+  # ExpiresByType audio/mp3                 "access plus 1 year"
+  # ExpiresByType video/mp4                 "access plus 1 year"
+  # ExpiresByType video/webm                "access plus 1 year"
+
+# # # htc files  (css3pie)
+#    ExpiresByType text/x-component          "access plus 1 month"
+
+# # # webfonts
+#    ExpiresByType font/truetype             "access plus 1 year"
+#    ExpiresByType font/opentype             "access plus 1 year"
+#    ExpiresByType application/x-font-woff   "access plus 1 year"
+#    ExpiresByType image/svg+xml             "access plus 1 year"
+#    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+
+# # # css and javascript
+#    ExpiresByType text/css                  "access plus 1 month"
+#    ExpiresByType application/javascript    "access plus 1 month"
+#    ExpiresByType text/javascript           "access plus 1 month"
+
+#   <IfModule mod_headers.c>
+#     Header append Cache-Control "public"
+#   </IfModule>
+
+#</IfModule>
+
+<FilesMatch "\.(js|css)$">
+# "The format is an absolute date and time as defined by HTTP-date in section 3.3.1..."
+Header set Expires "Thu, 15 Apr 2023 20:00:00 GMT"
+</FilesMatch>
+
+
+
+# ----------------------------------------------------------------------
+# figuren.theater CLEANUP
+# redirect ugly or unstructured URLs from the beginning
+# into the proper scheme, given in 03/2021
+# 
+# Old scheme:
+# %category%/%year%/%postname%
+# NEW scheme:
+# %category%/%year%/%month%/%postname%
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  #
+  RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
+  # do this only for some of our URLs
+ RewriteCond %{HTTP_HOST} ^meta\.figuren\.theater [NC,OR]
+ RewriteCond %{HTTP_HOST} ^meta\.figuren\.test [NC]
+
+  
+  # created with help from https://yoast.com/research/permalink-helper.php
+  # 1. Group: category
+  # 2. Group: year
+  # 3. Group: post_title !! in our new scheme, this 3rd param 
+  #                         is representing the monthly archives,
+  #                         so make sure to prevent rewriting thoose.
+  RewriteRule ^([^/]+)/([0-9]{4})/([^/\d]+)/$ ?name=$3 [L]
+
+</IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# figuren.theater GEOLOCATION
+# fun URLS using emoji
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  #
+  RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
+  # do this only for the portal
+#  RewriteCond %{HTTP_HOST} ^figuren\.theater [NC,OR]
+#  RewriteCond %{HTTP_HOST} ^puppen\.theater [NC,OR]
+#  RewriteCond %{HTTP_HOST} ^figuren\.test [NC,OR]
+#  RewriteCond %{HTTP_HOST} ^puppen\.test [NC]
+
+  # rewrite map-emoji to proper URL
+#  RewriteCond %{REQUEST_URI} 🗺️
+#  RewriteRule ^(.*)🇦🇹(.*)$ index.php/$1/in/$2 [L]
+#  RewriteRule ^(.*)%F0%9F%97%BA%EF%B8%8F(.*)$ index.php/$1/in/$2 [L]
+  RewriteRule ^(.*)🗺️(.*)$ index.php/$1/in/$2 [L]
+
+  # rewrite flag-emoji to proper URLs
+  RewriteRule ^(.*)🇦🇹(.*)$ index.php/$1/in/at/$2 [L]
+  RewriteRule ^(.*)🇨🇭(.*)$ index.php/$1/in/ch/$2 [L]
+  RewriteRule ^(.*)🇩🇪(.*)$ index.php/$1/in/de/$2 [L]
+
+</IfModule>
+
+
+
+
+# BEGIN Cache Enabler
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_setenvif.c>
+        RewriteEngine On
+        RewriteBase /
+
+        # cache directory
+        SetEnvIf Host ^ CE_CACHE_DIR=/content/cache/cache-enabler
+
+        # default cache keys
+        SetEnvIf Host ^ CE_CACHE_KEY_SCHEME http-
+        SetEnvIf Host ^ CE_CACHE_KEY_DEVICE
+        SetEnvIf Host ^ CE_CACHE_KEY_WEBP
+        SetEnvIf Host ^ CE_CACHE_KEY_COMPRESSION
+
+        # scheme cache key
+        RewriteCond %{HTTPS} ^(on|1)$ [OR]
+        RewriteCond %{SERVER_PORT} =443 [OR]
+        RewriteCond %{HTTP:X-Forwarded-Proto} =https [OR]
+        RewriteCond %{HTTP:X-Forwarded-Scheme} =https
+        RewriteRule ^ - [E=CE_CACHE_KEY_SCHEME:https-]
+
+        # device cache key
+        # SetEnvIf User-Agent "(Mobile|Android|Silk/|Kindle|BlackBerry|Opera Mini|Opera Mobi)" CE_CACHE_KEY_DEVICE=-mobile
+
+        # webp cache key
+        # SetEnvIf Accept image/webp CE_CACHE_KEY_WEBP=-webp
+
+        # compression cache key
+        <IfModule mod_mime.c>
+            SetEnvIf Accept-Encoding gzip CE_CACHE_KEY_COMPRESSION=.gz
+            AddType text/html .gz
+            AddEncoding gzip .gz
+        </IfModule>
+
+        # get cache file
+        SetEnvIf Host ^ CE_CACHE_FILE_DIR=%{ENV:CE_CACHE_DIR}/%{HTTP_HOST}%{REQUEST_URI}
+        SetEnvIf Host ^ CE_CACHE_FILE_NAME=%{ENV:CE_CACHE_KEY_SCHEME}index%{ENV:CE_CACHE_KEY_DEVICE}%{ENV:CE_CACHE_KEY_WEBP}.html%{ENV:CE_CACHE_KEY_COMPRESSION}
+        SetEnvIf Host ^ CE_CACHE_FILE=%{ENV:CE_CACHE_FILE_DIR}/%{ENV:CE_CACHE_FILE_NAME}
+
+        # check if cache file exists
+        RewriteCond %{DOCUMENT_ROOT}%{ENV:CE_CACHE_FILE} -f
+
+        # check request method
+        RewriteCond %{REQUEST_METHOD} =GET
+
+        # check permalink structure has trailing slash
+        RewriteCond %{REQUEST_URI} /[^\./\?]+(\?.*)?$
+        # check permalink structure has no trailing slash
+        # RewriteCond %{REQUEST_URI} /[^\./\?]+/(\?.*)?$
+
+        # check excluded query strings
+        RewriteCond %{QUERY_STRING} !^(?!(fbclid|ref|mc_(cid|eid)|utm_(source|medium|campaign|term|content|expid)|gclid|fb_(action_ids|action_types|source)|age-verified|usqp|cn-reloaded|_ga|_ke)).+$
+
+        # check excluded cookies
+        RewriteCond %{HTTP_COOKIE} !(wp-postpass|wordpress_logged_in|comment_author)_
+
+        # deliver cache file
+        RewriteRule ^ %{ENV:CE_CACHE_FILE} [L]
+    </IfModule>
+</IfModule>
+
+# END Cache Enabler
+
+
+# ----------------------------------------------------------------------
+# Prevent Username Enumeration
+# 
+# like: https://domain.com/?author=1
+# 
+# The request will be redirected 
+# to the author’s page with the corresponding user ID, 
+# what we DON'T want.
+# 
+# https://domain.com/author/admin_username
+# 
+# We want to block all author scan attacks!
+# 
+# Except admin requests like for "My posts"
+# wp-admin/edit.php?post_type=post&author=1
+# This should be OK!
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_URI} !(wp-admin) [NC]
+  RewriteCond %{QUERY_STRING} author=\d
+
+  # send 403 Forbidden 
+  RewriteRule ^ - [L,R=403]
+</IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# wordpress' house-internal rewrites
+# ----------------------------------------------------------------------
+
+
+<IfModule mod_rewrite.c>
+
+# WP 3.5+ Version 
+# @see http://codex.wordpress.org/Multisite_Network_Administration#.htaccess_and_Mod_Rewrite
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
+# Prevent -f checks on index.php.
+RewriteRule ^index\.php$ - [L]
+
+# add a trailing slash to /wp-admin
+RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+# (TEST: MULTI NETWORK)
+# RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+
+# https://mu.wordpress.org/forums/topic/12676#post-93458
+RewriteCond %{ENV:REDIRECT_STATUS} !^$ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+# RewriteRule ^(wp-(content|admin|includes).*) wp/$1 [L]
+# (TEST: MULTI NETWORK)
+# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) wp/$2 [L] 
+# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-includes.*) wp/$2 [L] 
+# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp/)?(wp-(content|admin|includes).*) $3 [L] 
+RewriteRule ^([_0-9a-zA-Z-\/]+/)?(wp-(content|admin|includes).*) wp/$2 [L] 
+
+
+# RewriteRule ^(.*\.php)$ wp/$1 [L]
+# (TEST: MULTI NETWORK)
+RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ wp/$2 [L]
+# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp/)?(.*\.php)$ $3 [L]
+RewriteRule . index.php [L]
+
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Protect Important WP and Server Files
+# 
+# Disables access to ...
+# 1. old and (hope-) fully unused xmlrpc API
+# 2. any log files
+# 3. the wp-config.* files
+# 4. most relevant dotfiles
+# ----------------------------------------------------------------------
+<FilesMatch "^(xmlrpc.php|php.*.log|error_log|wp-config.*|\.[hHeEgf][tTnNit][aApPvVtp].*|wp-cli.*.yml|package.json|composer.*|install.php|wp-signup.php)$">
+  Order deny,allow
+  Deny from all
+</FilesMatch>
+
+
+# ----------------------------------------------------------------------
+# HTTP Headers for better security 
+# ----------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+
+  # HTTP Strict Transport Security (HSTS)
+  # https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess#http_strict_transport_security_hsts
+  # Header set Strict-Transport-Security "max-age=31536000" env=HTTPS
+  # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  # (1) Enable your site for HSTS preload inclusion.
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  #
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Deactivates MIME Sniffing in Internet Explorer and Chrome.
+  #
+  Header set X-Content-Type-Options nosniff
+  
+  #
+  # https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess#frame_options
+  # SAMEORIGIN or DENY
+  # 
+  # this prevents oEmbeds of our content to work properly
+  # @TODO find another solution
+  # Header set X-Frame-Options SAMEORIGIN 
+  
+  # Referrer Policy
+  # https://infosec.mozilla.org/guidelines/web_security#referrer-policy
+  # 
+  # DISABLED to keep Referrers for the stats 
+  # Header set Referrer-Policy: no-referrer-when-downgrade 
+
+  # https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess#content_security_policy_csp
+  # 
+  # To make your CSP implementation easier, you can use an online CSP header generator. 
+  # https://report-uri.com/home/generate/
+  # 
+  # You should also use a validator to make sure your header does what you want it to do.
+  # https://csp-evaluator.withgoogle.com/
+  # 
+  #   Content-Security-Policy "default-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+    
+  # Permmisions (former:Feature) Policy
+  # https://developer.chrome.com/docs/privacy-sandbox/permissions-policy/
+  # https://github.com/w3c/webappsec-permissions-policy/blob/main/features.md
+  # https://www.permissionspolicy.com/
+  
+
+  # CLEANUP
+  Header always unset X-Distributor
+  Header always unset X-Cache-Handler
+  Header always unset X-Redirect-By
+  Header always unset X-Powered-By
+</IfModule>
+
+
+# If you are using custom permalink, this trick does not work
+ErrorDocument 404 /wp/index.php?error=404

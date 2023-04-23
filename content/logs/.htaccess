@@ -1,0 +1,4 @@
+# ----------------------------------------------------------------------
+# Protect the crazy thousands of third-parties, to not do or allow anything crazy.
+# ----------------------------------------------------------------------
+Deny from all

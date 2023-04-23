@@ -1,0 +1,31 @@
+
+# ----------------------------------------------------------------------
+# Expires headers (for better cache control)
+# ----------------------------------------------------------------------
+
+# these are pretty far-future expires headers
+# they assume you control versioning with cachebusting query params like
+#   <script src="application.js?20100608">
+# additionally, consider that outdated proxies may miscache
+#   www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
+
+# if you don't use filenames to version, lower the css and js to something like
+#   "access plus 1 week" or so
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+
+# your document html
+  ExpiresByType text/html                 "access plus 10 minutes"
+
+#   <IfModule mod_headers.c>
+#     Header append Cache-Control "public"
+#   </IfModule>
+
+</IfModule>
+
+
+<IfModule mod_headers.c>
+ # 5 Min.
+ Header set Cache-Control "max-age=300, public" 
+</IfModule>

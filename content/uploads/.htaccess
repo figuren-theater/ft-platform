@@ -1,0 +1,236 @@
+# ----------------------------------------------------------------------
+# Redirect All Web Traffic to HTTPS
+# ----------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  #
+  RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
+  # Redirect all http traffic to https
+  # Use the lexographically equal operator !=on. If you just use off it gets treated as a regex.
+  RewriteCond %{HTTPS} !=on 
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+</IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# Handle upload_url redirects with custom URLs
+#
+# this is important for the '__media'-redirects to work.
+# 
+# '__media' is a ugly hardcoded virtual directory
+#
+# ... to help with proper rewrite rules for media below 
+# the prefered domainname of the currently viewed site.
+#
+# It is used and needs to be updated at the following locations:
+# - /.htaccess
+# - /content/uploads/.htaccess
+# - /content/mu-plugins/ft_NETWORK__rewrite-rules.php
+# - /content/mu-plugins/Figuren_Theater/src/FeaturesRepo/UtilityFeature__managed_core_options.php
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  RewriteBase /
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+</IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# Configuration to deliver WebP Images
+#
+# works best together with a kind of automatic webp creation Plugin
+# like 'webp-express'
+#
+# @since 2018.09.03
+# ----------------------------------------------------------------------
+
+
+# WebP images with htaccess 
+#
+# This snippet detects if the browser supports WebP images 
+# and then serves a .webp image instead of jpg/png 
+# if a .webp file is available at the same location 
+# as the supplied jpg/png.
+# 
+# https://github.com/vincentorback/WebP-images-with-htaccess#usage
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Check if browser support WebP images
+  RewriteCond %{HTTP_ACCEPT} image/webp
+
+  # Check if WebP replacement image exists
+  RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+
+  # Serve WebP image instead
+  RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header append Vary Accept env=REDIRECT_accept
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Proper MIME type for all files
+# ----------------------------------------------------------------------
+
+# audio
+AddType audio/ogg                      oga ogg
+
+# video
+AddType video/ogg                      ogv
+AddType video/mp4                      mp4
+AddType video/webm                     webm
+
+# Proper svg serving. Required for svg webfonts on iPad
+#   twitter.com/FontSquirrel/status/14855840545
+AddType     image/svg+xml              svg svgz
+AddEncoding gzip                       svgz
+
+# webfonts
+AddType application/vnd.ms-fontobject  eot
+AddType font/truetype                  ttf
+AddType font/opentype                  otf
+AddType application/x-font-woff        woff
+
+# assorted types
+AddType image/x-icon                   ico
+AddType image/webp                     webp
+AddType text/cache-manifest            appcache manifest
+AddType text/x-component               htc
+AddType application/x-chrome-extension crx
+AddType application/x-xpinstall        xpi
+AddType application/octet-stream       safariextz
+AddType text/x-vcard                   vcf
+
+
+
+
+
+
+# # ----------------------------------------------------------------------
+# # Cookie-less image sub-domain in Apache
+# # ----------------------------------------------------------------------
+
+# AddDefaultCharset UTF-8
+# # ServerSignature Off
+# # Options -Indexes
+# #FileETag none
+
+# <IfModule mod_headers.c>
+# #  Header unset ETag
+#   Header unset Cookie
+#   Header unset Set-Cookie
+# </IfModule>
+
+# ----------------------------------------------------------------------
+# Expires headers (for better cache control)
+# ----------------------------------------------------------------------
+
+# these are pretty far-future expires headers
+# they assume you control versioning with cachebusting query params like
+#   <script src="application.js?20100608">
+# additionally, consider that outdated proxies may miscache
+#   www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
+
+# if you don't use filenames to version, lower the css and js to something like
+#   "access plus 1 week" or so
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+
+# # Perhaps better to whitelist expires rules? Perhaps.
+#   ExpiresDefault                          "access plus 1 month"
+
+# # cache.appcache needs re-requests in FF 3.6 (thx Remy ~Introducing HTML5)
+#   ExpiresByType text/cache-manifest       "access plus 0 seconds"
+
+# # your document html
+# #  ExpiresByType text/html                 "access plus 0 seconds"
+
+# # data
+#   ExpiresByType text/xml                  "access plus 0 seconds"
+#   ExpiresByType application/xml           "access plus 0 seconds"
+#   ExpiresByType application/json          "access plus 0 seconds"
+
+# # rss feed
+#   ExpiresByType application/rss+xml       "access plus 1 hour"
+
+# favicon (cannot be renamed)
+  ExpiresByType image/x-icon              "access plus 1 year"
+
+# media: images, video, audio
+  ExpiresByType image/gif                 "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/jpg                 "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType video/ogg                 "access plus 1 year"
+  ExpiresByType audio/ogg                 "access plus 1 year"
+  ExpiresByType audio/mp3                 "access plus 1 year"
+  ExpiresByType video/mp4                 "access plus 1 year"
+  ExpiresByType video/webm                "access plus 1 year"
+
+# # htc files  (css3pie)
+#   ExpiresByType text/x-component          "access plus 1 month"
+
+# # webfonts
+#   ExpiresByType font/truetype             "access plus 1 year"
+#   ExpiresByType font/opentype             "access plus 1 year"
+#   ExpiresByType application/x-font-woff   "access plus 1 year"
+#   ExpiresByType image/svg+xml             "access plus 1 year"
+#   ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+
+# # css and javascript
+#   ExpiresByType text/css                  "access plus 1 month"
+#   ExpiresByType application/javascript    "access plus 1 month"
+#   ExpiresByType text/javascript           "access plus 1 month"
+
+#   <IfModule mod_headers.c>
+#     Header append Cache-Control "public"
+#   </IfModule>
+
+</IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# IMAGE PROXY
+# Serve Missing (local) Media from a Production Server
+#
+# Note: If you’re working with WordPress, 
+# make sure this directive appears before the WordPress-generated rewrite rules 
+# Otherwise, WP will catch the missing file URL and route it to a 404 internally.
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+ RewriteEngine On
+
+# v1
+# RewriteCond %{HTTP_HOST} ^(.*)\.test$ [NC]
+# RewriteCond %{HTTP_HOST} ^(.*)\.test$ [NC,OR]
+# RewriteCond %{HTTP_HOST} ^(.*)\.xip\.io$ [NC]
+# RewriteRule ^(.*)$ https://%1.theater/$1 [L] # mostly working
+
+# v2
+# RewriteCond %{HTTP_HOST} ^(.*)\.test$ [NC]
+# RewriteRule ^sites/([0-9])/(.*)$ https://%1.theater/__media/$2 [L] # stopped working for now clear reason
+
+# v3
+# RewriteCond %{HTTP_HOST} ^(.+)$ [NC]
+  RewriteCond %{HTTP_HOST} ^(.*)\.test$ [NC]
+  RewriteRule ^(.*)$ https://assets.figuren.theater/uploads/$1 [R=301,L]
+</IfModule>
+
+
