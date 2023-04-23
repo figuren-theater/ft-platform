@@ -48,7 +48,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ github.sha }}
+          key: ${{ runner.os }}-composer-${{ github.sha }}-$(git ls-remote https://github.com/figuren-theater/ft-platform-collection.git refs/heads/main | awk '{ print $1 }')
           restore-keys: |
             ${{ runner.os }}-composer-      
 
@@ -58,7 +58,7 @@ jobs:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install all other dependencies
-        run: composer require -W figuren-theater/ft-platform-curation:dev-main
+        run: composer require -W figuren-theater/ft-platform-collection:dev-main
         
       # Help moving files (which koodimoni/dropin-installer is not capable for, see #11)
       - name: Move files (accompanying koodimoni)
