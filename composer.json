@@ -177,7 +177,6 @@
     "extra": {
         "wordpress-install-dir": "wp",
         "installer-paths": {
-            "content": ["type:wordpress-dropin"],
             "content/plugins/{$name}": ["type:wordpress-plugin"],
             "content/themes/twentytwentytwo-ft-core": ["figuren-theater/twentytwentytwo-ft-core"],
             "content/themes/twentytwentytwo-ft__katharina-muschiol": ["figuren-theater/twentytwentytwo-ft__katharina-muschiol"],
@@ -189,6 +188,7 @@
         },
         "dropin-paths": {
             "content": [
+                "package:figuren-theater/websites.fuer.figuren.theater-demos",
                 "package:figuren-theater/ft-privacy:inc/koko-analytics/k.php",
                 "package:figuren-theater/ft-routes:templates/htdocs/wp-content/sunrise.php",
                 "package:figuren-theater/ft-maintenance:templates/htdocs/wp-content/db-error.php",
