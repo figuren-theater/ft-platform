@@ -144,6 +144,14 @@
             "url": "https://github.com/figuren-theater/ft-theming"
         },
         {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/BLOGS"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/websites.fuer.figuren.theater-demos"
+        }
+        {
             "type": "vcs",
             "url": "https://github.com/hrsetyono/wp-sync-db"
         },
