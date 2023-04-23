@@ -41,6 +41,10 @@
         },
         {
             "type": "git",
+            "url": "https://github.com/figuren-theater/deprecated__Figuren_Theater__v2"
+        },
+        {
+            "type": "git",
             "url": "https://github.com/figuren-theater/altis-core"
         },
         {
@@ -182,6 +186,7 @@
             "content/themes/twentytwentytwo-ft__katharina-muschiol": ["figuren-theater/twentytwentytwo-ft__katharina-muschiol"],
             "content/themes/figuren-theater": ["figuren-theater/twentytwenty-ft-core"],
             "content/parent-themes/{$name}": ["type:wordpress-theme"],
+            "content/mu-plugins/{$name}": ["figuren-theater/deprecated__Figuren_Theater__v2"],
             "content/mu-plugins/FT/{$name}": ["vendor:figuren-theater"],
             "content/mu-plugins/{$name}": ["type:wordpress-muplugin"],
             "wp": ["type:wordpress-core"]
@@ -196,9 +201,6 @@
                 "package:figuren-theater/install.php:install.php",
                 "package:wpackagist-plugin/sqlite-object-cache:assets/drop-in/object-cache.php",
                 "type:wordpress-dropin"
-            ],
-            "content/mu-plugins": [
-                "package:figuren-theater/ft-core:templates/htdocs/wp-content/mu-plugins/must-use-loader.php"
             ],
             "vendor/rss-bridge/rss-bridge": [
                 "package:figuren-theater/ft-data:templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt",
