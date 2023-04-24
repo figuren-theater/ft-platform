@@ -137,10 +137,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/twentytwentytwo-ft__katharina-muschiol"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/twentytwenty-ft-core"
         },
         {
@@ -154,6 +150,10 @@
         {
             "type": "git",
             "url": "https://github.com/figuren-theater/websites.fuer.figuren.theater-demos"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/katharina-muschiol.de"
         },
         {
             "type": "vcs",
@@ -183,7 +183,6 @@
         "installer-paths": {
             "content/plugins/{$name}": ["type:wordpress-plugin"],
             "content/themes/twentytwentytwo-ft-core": ["figuren-theater/twentytwentytwo-ft-core"],
-            "content/themes/twentytwentytwo-ft__katharina-muschiol": ["figuren-theater/twentytwentytwo-ft__katharina-muschiol"],
             "content/themes/figuren-theater": ["figuren-theater/twentytwenty-ft-core"],
             "content/parent-themes/{$name}": ["type:wordpress-theme"],
             "content/mu-plugins/Figuren_Theater": ["figuren-theater/deprecated__Figuren_Theater__v2"],
