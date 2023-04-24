@@ -3,7 +3,7 @@
 * Plugin Name:  figuren.theater NETWORK | CONSTANTS for whole figuren.theater network
 * Description:  
 * Plugin URI:   
-* Version:      2022.09.05
+* Version:      2023.04.23
 * Author:       Carsten Bach
 * Author URI:   https://carsten-bach.de
 * License:      MIT
@@ -20,12 +20,13 @@ defined( 'ABSPATH' ) OR exit;
 // 'ft_milestone' taxonomy on
 // https://websites.fuer.figuren.theater
 // 
-define( 'FT_PLATTFORM_VERSION', '2.9.5' );
+define( 'FT_PLATTFORM_VERSION', '3.0.0' );
 
 # 1   figuren.theater
 # 4   meta.figuren.theater
 # 5   websites.fuer.figuren.theater
 # 12  mein.figuren.theater
+
 // (working since PHP 7)
 define(
 	'FT_CORESITES',
