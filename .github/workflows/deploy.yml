@@ -40,7 +40,12 @@ jobs:
     #      key: ${{ runner.os }}-composer-${{ hashFiles('README.md') }}
     #      restore-keys: |
     #        ${{ runner.os }}-composer-
-
+ 
+      - name: Get latest commit ID from ft-platform-collection
+        id: platform-collection
+        run: |
+          echo "commit_id={$(git ls-remote https://github.com/figuren-theater/ft-platform-collection.git refs/heads/main | awk '{ print $1 }')}" >> $GITHUB_OUTPUT
+  
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
@@ -48,7 +53,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ github.sha }}-$(git ls-remote https://github.com/figuren-theater/ft-platform-collection.git refs/heads/main | awk '{ print $1 }')
+          key: ${{ runner.os }}-composer-${{ github.sha }}-${{ steps.platform-collection.outputs.commit_id }}
           restore-keys: |
             ${{ runner.os }}-composer-      
 
