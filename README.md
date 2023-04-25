@@ -1,14 +1,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/figuren-theater/ft-plattform">
+  <a href="https://github.com/figuren-theater/ft-platform">
     <img src="https://raw.githubusercontent.com/figuren-theater/logos/main/favicon.png" alt="figuren.theater Logo" width="100" height="100">
   </a>
 
-  <h1 align="center">figuren.theater | Plattform</h1>
+  <h1 align="center">figuren.theater | Platform</h1>
 
   <p align="center">
-    ... like the WordPress Multisite network for puppeteers - <a href="https://figuren.theater">figuren.theater</a>.
+    The master-receipe of the WordPress platform for puppeteers - <a href="https://figuren.theater">figuren.theater</a>.
     <br /><br /><br />
     <a href="https://meta.figuren.theater/blog"><strong>Read our blog</strong></a>
     <br />
@@ -21,76 +21,29 @@
   </p>
 </div>
 
-## About 
 
-
-This is the long desc
-
-* [x] *list closed tracking-issues or `docs` files here*
-* [ ] Do you have any [ideas](/issues/new) ?
-
-## Background & Motivation
-
-...
-
-## Install
+## Install the figuren.theater platform
 
 1. Add this repository to your `composer.json`
-```json
-"repositories": [
-    {
-        "type": "git",
-        "url": "https://github.com/figuren-theater/ft-plattform"
-    }
-]
-```
-
+    ```json
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-platform"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/figuren-theater/ft-platform-collection"
+        }
+    ]
+    ```
 2. Install via command line
-```sh
-composer require figuren-theater/ft-plattform
-```
-
-## Usage
-
-### API
-
-```php
-Figuren_Theater::API\get_...()
-```
-
-### Plugins included
-
-This package contains the following plugins. 
-Thoose are completely managed by code and lack of their typical UI.
-
-* ...
-
-
-### What does this package do in addition?
-
-Accompaniying the core functionality of the mentioned plugins, theese **best practices** are included with this package.
-
-* ...
-
-
-## Built with & uses
-
-  - [dependabot](/.github/dependabot.yml)
-  - ....
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
+    ```sh
+    composer require figuren-theater/ft-platform
+    composer require figuren-theater/ft-platform-collection
+    ```
+3. Save the `.env.example` with all needed DB credentials, API keys, etc. as `.env` into the *new docroot*.
+4. Create a symlink from `/content/v` to `/vendor` on the production server.
 
 ## Versioning
 
