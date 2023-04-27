@@ -202,7 +202,6 @@
                 "package:figuren-theater/ft-maintenance:templates/htdocs/wp-content/maintenance.php",
                 "package:figuren-theater/ft-maintenance:templates/htdocs/wp-content/php-error.php",
                 "package:figuren-theater/install.php:install.php",
-                "package:wpackagist-plugin/sqlite-object-cache:assets/drop-in/object-cache.php",
                 "type:wordpress-dropin"
             ],
             "vendor/rss-bridge/rss-bridge": [
