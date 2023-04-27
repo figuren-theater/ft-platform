@@ -33,6 +33,10 @@
         },
         {
             "type": "git",
+            "url": "https://github.com/carstingaxion/wordpress-cache-control"
+        },
+        {
+            "type": "git",
             "url": "https://github.com/carstingaxion/shadow-taxonomy"
         },
         {
