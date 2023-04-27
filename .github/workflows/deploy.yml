@@ -70,7 +70,8 @@ jobs:
         run: |
           cp content/mu-plugins/FT/ft-data/templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt vendor/rss-bridge/rss-bridge/whitelist.txt &&
           cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/db-error.php content/db-error.php &&
-          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php
+          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php &&
+          cp vendor/wpackagist-plugin/sqlite-object-cache:assets/drop-in/object-cache.php content/object-cache.php
  
 
       - name: Deploy
