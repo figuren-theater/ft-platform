@@ -1,8 +1,8 @@
 ---
-name: Plattform update
+name: Platform update
 about: "[Absolutely internal] issue template to succeed updating the whole figuren.theater
-  plattform"
-title: Plattform update
+  platform"
+title: Platform update
 labels: ''
 assignees: ''
 
