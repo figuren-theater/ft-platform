@@ -20,26 +20,6 @@ jobs:
   
       - name: Prepare auth Token
         run: composer global config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-        
-  #    - name: Cache dependencies
-  #      uses: actions/cache@v2
-  #      with:
-  #        path: ~/.composer/cache/files
-  #        key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
-
-   #   - name: Get Composer cache directory
-   #     id: composer-cache
-   #     run: |
-   #       echo "composer_dir={$(composer config cache-files-dir)}" >> $GITHUB_OUTPUT
-
-    #  - name: Retrieve Composer‘s cache
-    #    uses: actions/cache@v3
-    #    with:
-    #      # path: ${{ steps.composer-cache.outputs.composer_dir }}
-    #      path: /
-    #      key: ${{ runner.os }}-composer-${{ hashFiles('README.md') }}
-    #      restore-keys: |
-    #        ${{ runner.os }}-composer-
  
       - name: Get latest commit ID from ft-platform-collection
         id: platform-collection
@@ -62,11 +42,11 @@ jobs:
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install all other dependencies
+      - name: Install all platform dependencies
         run: composer require -W figuren-theater/ft-platform-collection:dev-main
         
       # Help moving files (which koodimoni/dropin-installer is not capable for, see #11)
-      - name: Move files (accompanying koodimoni)
+      - name: Copy files (accompanying koodimoni)
         run: |
           cp content/mu-plugins/FT/ft-data/templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt vendor/rss-bridge/rss-bridge/whitelist.txt &&
           cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/db-error.php content/db-error.php &&
