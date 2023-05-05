@@ -71,7 +71,11 @@ jobs:
             **/wp-content/plugins/**
             **/wp-content/themes/**
             **/.editorconfig
-            **/composer.*
+            **/composer.json
+            **/composer.lock
+            **/README.md
+            **/wp-config.local.php
+            **/wp-config.staging.php
             **/wp-translation-downloader.lock
             # figuren-theater/ft-theming/wp-better-emails --> Error: Error: Server sent FIN packet unexpectedly ...
             **/wp-better-emails/preview.html
