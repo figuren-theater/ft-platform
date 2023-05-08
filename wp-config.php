@@ -81,11 +81,30 @@ require_once 'wp-config.default.php';
 require_once 'wp-config.' . WP_ENVIRONMENT_TYPE . '.php';
 
 
-// ===========================================================================
-// Depend the use of the object-cache.php dropin on the WP_CACHE constant.
-// ===========================================================================
+// ====================================================================================================
+// Depend the use of the object-cache.php dropin on the WP_CACHE constant which is set per ENVIRONMENT.
+// ====================================================================================================
 define( 'WP_SQLITE_OBJECT_CACHE_DISABLED', ! constant( 'WP_CACHE' ) );
 // define( 'WP_SQLITE_OBJECT_CACHE_DISABLED', true );
+
+// ============================================
+// New Default SQLite cache location
+// 
+// used by 'SQLite Object Cache' Plugin
+// and is called by 'object-cache.php' dropin
+// which defines the need to have this defined,
+// that early and not inside the typical
+// vendor/plugin/structure
+// ============================================
+// define( 'WP_SQLITE_OBJECT_CACHE_DB_FILE', WP_CONTENT_DIR . '/cache/.ht.object-cache.sqlite' );
+// 
+// Prevent Error: "Unable to execute statement: database is locked" 
+// by using a sqlite-cache-file outside of htdocs
+// 
+// Detailed explanation at:
+// https://wordpress.org/support/topic/uncaught-exception-unable-to-execute-statement-database-is-locked/#post-16401191
+// define( 'WP_SQLITE_OBJECT_CACHE_DB_FILE', '/usr/share/php/.ht.object-cache.sqlite' ); // SQLite3::__construct(): open_basedir restriction in effect. File(/tmp/.ht.object-cache.-a.sqlite) is not within the allowed path(s): (/srv/www/htdocs/c.bach/www.puppen.theater/:/mnt/php/upload:/usr/share/php:/var/lib/php) in /srv/www/htdocs/c.bach/www.puppen.theater/content/object-cache.php on line 564
+define( 'WP_SQLITE_OBJECT_CACHE_DB_FILE', '/mnt/php/upload/.ht.object-cache.sqlite' ); // SQLite3::__construct(): open_basedir restriction in effect. File(/tmp/.ht.object-cache.-a.sqlite) is not within the allowed path(s): (/srv/www/htdocs/c.bach/www.puppen.theater/:/mnt/php/upload:/usr/share/php:/var/lib/php) in /srv/www/htdocs/c.bach/www.puppen.theater/content/object-cache.php on line 564
 
 
 

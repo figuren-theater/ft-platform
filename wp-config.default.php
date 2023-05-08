@@ -225,19 +225,3 @@ ini_set(  'log_errors', 1 );
 // ==============================
 // define( 'WP_DEFAULT_THEME', 'twentytwentytwo-ft' );
 define( 'WP_DEFAULT_THEME', 'oaknut' );
-
-
-
-
-
-// ============================================
-// New Default SQLite cache location
-// 
-// used by 'SQLite Object Cache' Plugin
-// and is called by 'object-cache.php' dropin
-// which defines the need to have this defined,
-// that early and not inside the typical
-// vendor/plugin/structure
-// ============================================
-define( 'WP_SQLITE_OBJECT_CACHE_DB_FILE', WP_CONTENT_DIR . '/cache/.ht.object-cache.sqlite' );
-
