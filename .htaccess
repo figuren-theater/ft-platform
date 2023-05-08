@@ -420,7 +420,7 @@ AddType text/x-vcard                   vcf
 
 <FilesMatch "\.(js|css)$">
 # "The format is an absolute date and time as defined by HTTP-date in section 3.3.1..."
-Header set Expires "Thu, 15 Apr 2023 20:00:00 GMT"
+Header set Expires "Thu, 15 Apr 2024 20:00:00 GMT"
 </FilesMatch>
 
 
