@@ -46,7 +46,9 @@ const FT_PACKAGES = [
 
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'mu_plugin_loaded', function () {
+// add_action( 'mu_plugin_loaded', __NAMESPACE__ . '\\require_platform_files' );
+// add_action( 'muplugins_loaded', __NAMESPACE__ . '\\require_platform_files' );
+function require_platform_files() {
 
 	// load modules one by one
 	// should be done by composer 
@@ -84,8 +86,8 @@ add_action( 'mu_plugin_loaded', function () {
 	//
 	do_action( __NAMESPACE__ . '\\loaded', FT::site() );
 
-} );
-
+}
+require_platform_files();
 
 
 //////////////////////////////////
