@@ -109,6 +109,12 @@ define( 'WP_SQLITE_OBJECT_CACHE_DB_FILE', '/mnt/php/upload/.ht.object-cache.sqli
 
 
 // ===========================================================================
+// CE // default: ABSPATH . 'index.php'
+// ===========================================================================
+define( 'CACHE_ENABLER_INDEX_FILE', FT_ROOT_DIR . '/index.php', );
+
+
+// ===========================================================================
 // Let composer load all namespaced classes.
 // ===========================================================================
 require __DIR__ . '/vendor/autoload.php';
