@@ -46,6 +46,7 @@ define( 'DISABLE_WP_CRON', true );
 // WordPress Debugging Mode
 // ========================
 define( 'WP_DEBUG', true );
+
 // ========================
 if ( constant( 'WP_DEBUG' ) ) {
 
