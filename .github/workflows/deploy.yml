@@ -71,7 +71,6 @@ jobs:
             **/wp-content/plugins/**
             **/wp-content/themes/**
             **/.editorconfig
-            **/composer.json
             **/composer.lock
             **/README.md
             **/wp-config.local.php
