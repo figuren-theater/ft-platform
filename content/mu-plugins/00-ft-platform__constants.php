@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) OR exit;
 // 'ft_milestone' taxonomy on
 // https://websites.fuer.figuren.theater
 // 
-define( 'FT_PLATTFORM_VERSION', '3.0.1' );
+define( 'FT_PLATTFORM_VERSION', '3.0.2' );
 
 # 1   figuren.theater
 # 4   meta.figuren.theater
