@@ -3,19 +3,17 @@
 # which will install the dependencies, build the project, 
 # and deploy the new or updated files to the remote server.
 
-name: Release Deploy
+name: Dry-Run Deploy
 
 on:
-  # workflow_dispatch:
-  # Only trigger, when the dry-run workflow succeeded
-  workflow_run:
-    workflows: ["Dry-Run Deploy"]
-    types: [completed]
+  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -59,6 +57,7 @@ jobs:
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
+          dry-run: true
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
