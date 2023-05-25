@@ -161,11 +161,13 @@ define( 'MULTISITE', true );
 // BUT needs to be enabled for ft-core-domaincheck-block (re-enabled)
 // Added switch.
 switch ( rtrim( $hostname, '/' ) ) {
+
 	case 'mein.figuren.theater':
 	case 'mein.figuren.test':
 	// case 'mein.puppen.test': // --> results in an untrackable error, when Alias is active
 		define( 'SUBDOMAIN_INSTALL', false ); 
 		break;
+	
 	case 'websites.fuer.figuren.theater':
 	case 'websites.fuer.figuren.test':
 		// Only when

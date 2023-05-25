@@ -40,13 +40,13 @@ define( 'DISABLE_WP_CRON', true );
 // ======================================
 // Manually activate the MAINTENANCE MODE
 // ======================================
-// define( 'FT_MAINTENANCE_MODE', true );
+define( 'FT_MAINTENANCE_MODE', false );
 
 // ========================
 // WordPress Debugging Mode
 // ========================
-define( 'WP_DEBUG', true );
-
+define( 'WP_DEBUG', false );
+// define( 'WP_CACHE', false );
 // ========================
 if ( constant( 'WP_DEBUG' ) ) {
 
