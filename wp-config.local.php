@@ -2,9 +2,9 @@
 /**
  * Development environment config settings
  *
- * Enter any WordPress config settings that are specific to this environment 
+ * Enter any WordPress config settings that are specific to this environment
  * in this file.
- * 
+ *
  * @package Figuren_Theater
  * @version 2022.10.17
  * @author  Carsten Bach  <mail@carsten-bach.de>
@@ -12,16 +12,16 @@
 
 // ====================================================
 // Use "Mercator Plugin"
-// 
+//
 // for domain-aliasing
 // • of .puppen.test
 // • of .puppen.theater
 // • of .xip.io
 // • and custom top-level domains
-// 
+//
 // @see https://github.com/humanmade/Mercator/wiki
 // ====================================================
-define( 'SUNRISE', true ); // keep undefined|commented if not needed
+define( 'SUNRISE', true );
 
 // ===================================================
 // Do not 'Disable WP Cron' locally
@@ -42,7 +42,7 @@ if ( constant( 'WP_DEBUG' ) ) {
 	// Define a seperate php.debug.log
 	// This replaces the need for defining
 	// define( 'WP_DEBUG_LOG', true);
-	// 
+	//
 	// because it does exactly this.
 	// @see http://wordpress.stackexchange.com/a/84269/20992
 	// =====================================================
@@ -53,20 +53,20 @@ if ( constant( 'WP_DEBUG' ) ) {
 	//
 	// USE ONLY in PHP 5.3 or higher
 	// =======================================
-	@ini_set( 'error_reporting', E_ALL ^ E_STRICT );
+	@ini_set( 'error_reporting', E_ALL ^ E_STRICT ); // phpcs:ignore
 
 	// ======================================
 	// Define separate php.debug.log Location
 	// ======================================
-	@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.debug.log' );
+	@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.debug.log' ); // phpcs:ignore
 
 
 	// ============================================================
-	// SCRIPT_DEBUG is a related constant that will force WordPress 
-	// to use the "dev" versions of core CSS and Javascript files 
-	// rather than the minified versions that are normally loaded. 
+	// SCRIPT_DEBUG is a related constant that will force WordPress
+	// to use the "dev" versions of core CSS and Javascript files
+	// rather than the minified versions that are normally loaded.
 	//
-	// This is useful when you are testing modifications 
+	// This is useful when you are testing modifications
 	// to any built-in .js or .css files. Default is false.
 	// ============================================================
 	define( 'SCRIPT_DEBUG', false );
