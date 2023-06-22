@@ -42,7 +42,7 @@ if ( constant( 'WP_DEBUG' ) ) {
 	//
 	// USE ONLY in PHP 5.3 or higher
 	// =======================================
-	@ini_set( 'error_reporting', E_ALL ^ E_STRICT ); // phpcs:ignore
+	@error_reporting( E_ALL ^ E_STRICT ); // phpcs:ignore
 
 	// ======================================
 	// Define separate php.debug.log Location

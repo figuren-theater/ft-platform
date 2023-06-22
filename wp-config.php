@@ -29,7 +29,7 @@
 // ===========================================================================
 // Define the absolute base directories once
 // ===========================================================================
-define( 'FT_ROOT_DIR', dirname( __FILE__ ) );
+define( 'FT_ROOT_DIR', __DIR__ );
 define( 'FT_WP_DIR', '/wp' );
 
 // ===========================================================================
@@ -38,40 +38,26 @@ define( 'FT_WP_DIR', '/wp' );
 // This may be the only file that is grabbed directly with require because it
 // is so sweet small with no composer package and no git repo and nothin'.
 // ===========================================================================
-require_once FT_ROOT_DIR . '/content/mu-plugins/FT/ft-core/lib/dotenv/DotEnv.php';
+require_once FT_ROOT_DIR . '/lib/dotenv/DotEnv.php';
 ( new DevCoder\DotEnv( FT_ROOT_DIR . '/.env' ) )->load();
 
 
-// =================================
-// Try environment variable 'WP_ENVIRONMENT_TYPE'
-// =================================
 if ( getenv( 'WP_ENVIRONMENT_TYPE' ) !== false ) {
-
-	// ===============================================
-	// Filter non-alphabetical characters for security
-	// ===============================================
+	/*
+	 * @var string Set Environment, while filtering non-alphabetical characters for security
+	 */
 	define( 'WP_ENVIRONMENT_TYPE', preg_replace( '/[^a-z]/', '', getenv( 'WP_ENVIRONMENT_TYPE' ) ) );
 }
+defined( 'WP_ENVIRONMENT_TYPE' ) || define( 'WP_ENVIRONMENT_TYPE', 'production' );
 
 if ( getenv( 'WP_BASE_URL' ) !== false ) {
-
-	// ===============================================
-	//
-	// ===============================================
+	/*
+	 * @var string Domain plus top-level domain without protocoll and path.
+	 */
 	define( 'WP_BASE_URL', getenv( 'WP_BASE_URL' ) );
 }
+defined( 'WP_BASE_URL' ) || define( 'WP_BASE_URL', 'figuren.theater' );
 
-
-// ================
-// Define site host - -  was LAST used here: // define( 'DOMAIN_CURRENT_SITE', rtrim($hostname, '/') ); # disabled to test wp-multi-network
-// IF this could be removed this can also be trashed
-
-// ================
-if ( isset( $_SERVER['X_FORWARDED_HOST'] ) && ! empty( $_SERVER['X_FORWARDED_HOST'] ) ) {
-	$hostname = getenv( 'X_FORWARDED_HOST' );
-} else {
-	$hostname = getenv( 'HTTP_HOST' );
-}
 
 // =================
 // Load config files

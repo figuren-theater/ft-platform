@@ -16,7 +16,7 @@
 // =====================================
 // Authentication Unique Keys and Salts.
 // =====================================
-/**#@+
+/**
  *
  * Change these to different unique phrases!
  * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
@@ -50,7 +50,7 @@ define( 'LANGDIR', 'content/languages' );
 // ===========
 // Custom URLS
 // ===========
-define( 'WP_CONTENT_URL', 'https://assets.' . WP_BASE_URL );
+define( 'WP_CONTENT_URL', 'https://assets.' . constant( 'WP_BASE_URL' ) );
 define( 'WP_PLUGIN_URL', WP_CONTENT_URL . '/plugins' );
 define( 'WPMU_PLUGIN_URL', WP_CONTENT_URL . '/mu-plugins' );
 
@@ -91,11 +91,11 @@ define( 'AUTOMATIC_UPDATER_DISABLED', true );
 // =====================================================================
 define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
 
-// ======================
+// ==============================================
 // Disable WP File Editor
-// ======================
+// no updates and nags for updates, themes and core
+// ==============================================
 define( 'DISALLOW_FILE_EDIT', true );
-// no updates, nags, for updates, themes and core
 define( 'DISALLOW_FILE_MODS', true );
 
 // =====================================================
@@ -126,19 +126,43 @@ define( 'EMPTY_TRASH_DAYS', 60 );
 define( 'FORCE_SSL_ADMIN', true );
 define( 'FORCE_SSL_LOGIN', true );
 
+
+
+// ================
+// Define site host - -  was LAST used here: // define( 'DOMAIN_CURRENT_SITE', rtrim($hostname, '/') ); # disabled to test wp-multi-network
+// IF this could be removed this can also be trashed
+// ================
+if ( isset( $_SERVER['X_FORWARDED_HOST'] ) && ! empty( $_SERVER['X_FORWARDED_HOST'] ) ) {
+	$hostname = getenv( 'X_FORWARDED_HOST' );
+} else {
+	$hostname = getenv( 'HTTP_HOST' );
+}
+$hostname = (string) $hostname;
+
 // =====================
 // Define cookie domains
 // =====================
 define( 'ADMIN_COOKIE_PATH', '/' );
 
-define( 'COOKIE_DOMAIN', $hostname ); // must be disabled, because of MU-Subdomain-Configuration // re-enabled to make carstenbach.puppen.test work, triggers a PHP warning by mercator
+// Must be disabled, because of MU-Subdomain-Configuration.
+// Re-enabled to make carstenbach.puppen.test work, triggers a PHP warning by mercator.
+define( 'COOKIE_DOMAIN', $hostname );
 
-// define( 'COOKIEPATH', '/' ); // TESTING LOGOUT-ISSUE https://wordpress.org/support/topic/customer-log-out-not-working/#post-13289425
-define( 'COOKIEPATH', '' ); // TESTING for wp-multi-network (removed slash)
+/*
+ * 1. TESTING LOGOUT-ISSUE
+ * https://wordpress.org/support/topic/customer-log-out-not-working/#post-13289425
+ *
+ * 2. TESTING for wp-multi-network (removed slash)
+ */
+define( 'COOKIEPATH', '' );
 
-define( 'SITECOOKIEPATH', '/' ); // TESTING LOGOUT-ISSUE https://wordpress.org/support/topic/customer-log-out-not-working/#post-13289425 // TESTING for wp-multi-network (is recommended setup)
-
-// define( 'PLUGINS_COOKIE_PATH', WP_CONTENT_DIR .'/plugins' );
+/*
+ * 1. TESTING LOGOUT-ISSUE
+ * https://wordpress.org/support/topic/customer-log-out-not-working/#post-13289425
+ *
+ * 2. TESTING for wp-multi-network (is recommended setup)
+ */
+define( 'SITECOOKIEPATH', '/' );
 
 
 // =====================
@@ -167,8 +191,8 @@ switch ( rtrim( $hostname, '/' ) ) {
 
 	case 'websites.fuer.figuren.theater':
 	case 'websites.fuer.figuren.test':
-		// Only when
-		if ( 0 === strpos( $_SERVER['REQUEST_URI'], '/demos' ) ) {
+		// Only for our '/demos' network.
+		if ( isset( $_SERVER['REQUEST_URI'] ) && 0 === strpos( (string) getenv( 'REQUEST_URI' ), '/demos' ) ) {
 			define( 'SUBDOMAIN_INSTALL', false );
 		}
 		break;
@@ -176,52 +200,67 @@ switch ( rtrim( $hostname, '/' ) ) {
 	default:
 		break;
 }
-// the absolute default
+// Prepare the absolute default.
 defined( 'SUBDOMAIN_INSTALL' ) || define( 'SUBDOMAIN_INSTALL', true );
 
-$base = '/';
+/*
+ * 1. TESTING for wp-multi-network (disabled)
+ * 2. needs to be enabled for meractor
+ * 3. needs to be disabled to allow 2nd-level-nested subdir-installs
+ * 4. introduced the if check
+ */
 if ( true === constant( 'SUBDOMAIN_INSTALL' ) ) {
-	define( 'PATH_CURRENT_SITE', '/' ); // TESTING for wp-multi-network (disabled) // needs to be enabled for meractor // needs to be disabled to allow 2nd-level-nested subdir-installs // introduced the if check
+	define( 'PATH_CURRENT_SITE', '/' );
 }
-// define( 'SITE_ID_CURRENT_SITE', 1 );
-// define( 'BLOG_ID_CURRENT_SITE', 1 ); // defined in wp-config.env.php
-define( 'DOMAIN_CURRENT_SITE', rtrim( $hostname, '/' ) ); // TESTING for wp-multi-network (disabled) // needs to be enabled for meractor
+
+/*
+ * 1. TESTING for wp-multi-network (disabled)
+ * 2. needs to be enabled for meractor
+ */
+define( 'DOMAIN_CURRENT_SITE', rtrim( $hostname, '/' ) );
 
 
+/*
+ * Prevent WP Multisite Redirect Loop
+ *
+ * @see https://tommcfarlin.com/resolving-the-wordpress-multisite-redirect-loop/
+ * @see https://stackoverflow.com/a/31982882
+ *
+ * If registration is disabled, please set NOBLOGREDIRECT
+ * to a URL you will redirect visitors to
+ * if they visit a non-existent site.
+ *
+ * 1. NEEDS mu-plugins\cbstdsys_sw_noblogredirect-404-fix.php
+ * 2. Required to be TRUE by mu-plugins/dmhendricks__network-subdomain-updater.php
+ */
+define( 'NOBLOGREDIRECT', '%siteurl%' );
 
-// =============================================================================
-// Prevent WP Multisite Redirect Loop
-// @see https://tommcfarlin.com/resolving-the-wordpress-multisite-redirect-loop/
-// @see https://stackoverflow.com/a/31982882
-//
-// If registration is disabled, please set NOBLOGREDIRECT
-// to a URL you will redirect visitors to
-// if they visit a non-existent site.
-//
-// =============================================================================
-define( 'NOBLOGREDIRECT', '%siteurl%' ); // NEEDS mu-plugins\cbstdsys_sw_noblogredirect-404-fix.php // Required to be TRUE by mu-plugins/dmhendricks__network-subdomain-updater.php
-define( 'NSDU_URL', WP_BASE_URL ); // https://github.com/dmhendricks/wordpress-network-subdomain-updater-plugin/pull/2
+/*
+ * @see https://github.com/dmhendricks/wordpress-network-subdomain-updater-plugin/pull/2
+ */
+define( 'NSDU_URL', constant( 'WP_BASE_URL' ) );
 
 
 
 
 // =======================================================
 // Disable all kinds of displaying errors or debug notices
+// Important as fallback for the current infrastructure (June 2023)
 // =======================================================
-ini_set( 'display_errors', 0 );
-@ini_set( 'display_errors', 'Off' );
+ini_set( 'display_errors', '0' ); // phpcs:ignore
+@ini_set( 'display_errors', 'Off' ); // phpcs:ignore
 define( 'WP_DEBUG_DISPLAY', false );
 
 // =============================
 // Define php.error.log Location
+// Important as fallback for the current infrastructure (June 2023)
 // =============================
-ini_set( 'log_errors', 1 );
-@ini_set( 'log_errors', 'On' );
-@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.error.log' );
+ini_set( 'log_errors', '1' ); // phpcs:ignore
+@ini_set( 'log_errors', 'On' ); // phpcs:ignore
+@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.error.log' ); // phpcs:ignore
 
 
 // ==============================
 // Set Network-Wide Default Theme
 // ==============================
-// define( 'WP_DEFAULT_THEME', 'twentytwentytwo-ft' );
 define( 'WP_DEFAULT_THEME', 'oaknut' );

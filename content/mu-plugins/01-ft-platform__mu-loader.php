@@ -46,9 +46,7 @@ const FT_PACKAGES = [
 
 defined( 'ABSPATH' ) || exit;
 
-// add_action( 'mu_plugin_loaded', __NAMESPACE__ . '\\require_platform_files' );
-// add_action( 'muplugins_loaded', __NAMESPACE__ . '\\require_platform_files' );
-function require_platform_files() {
+function require_platform_files() :void {
 
 	// load modules one by one
 	// should be done by composer 
@@ -94,7 +92,7 @@ require_platform_files();
 // temporary TEST & DEBUG stuff //
 //////////////////////////////////
 
-
+/*
 function load_script_textdomain_relative_path( string $relative, string $src  ) : string {
 
 	// if ('wordpress-seo/js/dist/externals/helpers.js' === $relative ) {
@@ -159,17 +157,14 @@ function load_script_textdomain_relative_path( string $relative, string $src  ) 
 	return $relative;
 }
 // add_filter( 'load_script_textdomain_relative_path', __NAMESPACE__ . '\\load_script_textdomain_relative_path', 1000, 3 );
-
+*/
 
 /**
  * !!!
  *
- * @package [package]
- * @since   3.0
- *
  * @param   string    $mofile [description]
  * @param   string    $domain [description]
- * @return  [type]            [description]
+ * @return  string            [description]
  */
 function load_textdomain_mofile( string $mofile, string $domain  ) : string {
 
@@ -188,7 +183,7 @@ function load_textdomain_mofile( string $mofile, string $domain  ) : string {
 
 	return $mofile;
 }
-add_filter( 'load_textdomain_mofile', __NAMESPACE__ . '\\load_textdomain_mofile', 1000, 3 );
+add_filter( 'load_textdomain_mofile', __NAMESPACE__ . '\\load_textdomain_mofile', 1000, 2);
 
 
 /**
@@ -205,6 +200,7 @@ add_filter( 'load_textdomain_mofile', __NAMESPACE__ . '\\load_textdomain_mofile'
  * @param string       $handle Name of the script to register a translation domain to.
  * @param string       $domain The text domain.
  */
+/*
 function load_script_translation_file( string $file, string $handle, string $domain ) : string {
 
 	$file_exists = file_exists($file);
@@ -217,20 +213,20 @@ function load_script_translation_file( string $file, string $handle, string $dom
 		#    'file_exists' => ,
 		#] );
 	}
-	/*
 
-	$file = str_replace(
-		'content/languages/v/',
-		'content/languages/plugins/',
-		$file
-	);
-	$file = str_replace(
-		'content/pluginsvendor',
-		// 'content/v',
-		'vendor',
-		$file
-	);*/
+	// $file = str_replace(
+	// 	'content/languages/v/',
+	// 	'content/languages/plugins/',
+	// 	$file
+	// );
+	// $file = str_replace(
+	// 	'content/pluginsvendor',
+	// 	// 'content/v',
+	// 	'vendor',
+	// 	$file
+	// );
 
 	return $file;
 }
 // add_filter( 'load_script_translation_file', __NAMESPACE__ . '\\load_script_translation_file', 1000, 3 );
+*/
