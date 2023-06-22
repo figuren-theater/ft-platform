@@ -57,6 +57,10 @@
         },
         {
             "type": "git",
+            "url": "https://github.com/figuren-theater/code-quality"
+        },
+        {
+            "type": "git",
             "url": "https://github.com/figuren-theater/ft-admin-ui"
         },
         {
@@ -235,7 +239,8 @@
             "figuren-theater/*": true,
             "altis/*": true,
             "koodimonni/composer-dropin-installer": true,
-            "inpsyde/wp-translation-downloader": true
+            "inpsyde/wp-translation-downloader": true,
+            "phpstan/extension-installer": true
         }
     },
     "require": {
@@ -244,5 +249,8 @@
     },
     "provide": {
         "georgestephanis/application-passwords": "*"
+    },
+    "require-dev": {
+        "figuren-theater/code-quality": "dev-main"
     }
 }

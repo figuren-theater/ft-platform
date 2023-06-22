@@ -45,6 +45,11 @@
 3. Save the `.env.example` with all needed DB credentials, API keys, etc. as `.env` into the *new docroot*.
 4. Create a symlink from `/content/v` to `/vendor` on the production server.
 
+## Built with & uses
+
+  - [dependabot](/.github/dependabot.yml)
+  - [Build, test & measure](https://github.com/figuren-theater/code-quality/blob/main/.github/workflows/build-test-measure.yml) - a custom, but *required* status check for code-quality on all *push*s and *pull_request*s
+
 ## Versioning
 
 We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
