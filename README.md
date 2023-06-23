@@ -45,10 +45,33 @@
 3. Save the `.env.example` with all needed DB credentials, API keys, etc. as `.env` into the *new docroot*.
 4. Create a symlink from `/content/v` to `/vendor` on the production server.
 
+## Structure
+- [ft-platform](https://github.com/figuren-theater/ft-platform/)
+    - [ft-core](https://github.com/figuren-theater/ft-core/)
+        - [WordPress](https://www.wordpress.org/)
+    - [ft-platform-collection](https://github.com/figuren-theater/ft-platform-collection/)
+        - [ft-admin-ui](https://github.com/figuren-theater/ft-admin-ui)
+        - [ft-coresites](https://github.com/figuren-theater/ft-coresites)
+        - [ft-data](https://github.com/figuren-theater/ft-data)
+        - [ft-interactive](https://github.com/figuren-theater/ft-interactive)
+        - [ft-maintenance](https://github.com/figuren-theater/ft-maintenance)
+        - [ft-media](https://github.com/figuren-theater/ft-media)
+        - [ft-onboarding](https://github.com/figuren-theater/ft-onboarding)
+        - [ft-options](https://github.com/figuren-theater/ft-options)
+        - [ft-performance](https://github.com/figuren-theater/ft-performance)
+        - [ft-privacy](https://github.com/figuren-theater/ft-privacy)
+        - [ft-routes](https://github.com/figuren-theater/ft-routes)
+        - [ft-security](https://github.com/figuren-theater/ft-security)
+        - [ft-seo](https://github.com/figuren-theater/ft-seo)
+        - [ft-site-editing](https://github.com/figuren-theater/ft-site-editing)
+        - [ft-themes](https://github.com/figuren-theater/ft-themes)
+        - [ft-theming](https://github.com/figuren-theater/ft-theming)
+
+
 ## Built with & uses
 
   - [dependabot](/.github/dependabot.yml)
-  - [Build, test & measure](https://github.com/figuren-theater/code-quality/blob/main/.github/workflows/build-test-measure.yml) - a custom, but *required* status check for code-quality on all *push*s and *pull_request*s
+  - [figuren-theater/code-quality](https://github.com/figuren-theater/code-quality/) - a *required* status check for healthier code and standardized quality on all code changes
 
 ## Versioning
 
