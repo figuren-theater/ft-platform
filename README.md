@@ -29,10 +29,6 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-platform"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-platform-collection"
         }
     ]
