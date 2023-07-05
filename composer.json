@@ -30,7 +30,7 @@
         "figuren-theater/ft-core": "^1"
     },
     "require-dev": {
-        "figuren-theater/code-quality": "dev-main"
+        "figuren-theater/code-quality": "^0"
     },
     "provide": {
         "georgestephanis/application-passwords": "*"
