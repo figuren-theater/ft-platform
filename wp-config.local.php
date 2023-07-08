@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore PSR1.Files.SideEffects.FoundWithSymbols // impossible to do it another way
 /**
  * Development environment config settings
  *
@@ -27,7 +27,6 @@ define( 'SUNRISE', true );
 // Do not 'Disable WP Cron' locally
 // ===================================================
 define( 'DISABLE_WP_CRON', false );
-
 
 // ========================
 // WordPress Debugging Mode
@@ -60,7 +59,6 @@ if ( constant( 'WP_DEBUG' ) ) {
 	// ======================================
 	@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.debug.log' ); // phpcs:ignore
 
-
 	// ============================================================
 	// SCRIPT_DEBUG is a related constant that will force WordPress
 	// to use the "dev" versions of core CSS and Javascript files
@@ -77,8 +75,6 @@ if ( constant( 'WP_DEBUG' ) ) {
 	// ====================
 	define( 'SAVEQUERIES', true );
 }
-
-
 
 // ======================================
 // Manually activate the MAINTENANCE MODE

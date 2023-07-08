@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore PSR1.Files.SideEffects.FoundWithSymbols // impossible to do it another way
 /**
  * Production environment config settings
  *
@@ -23,20 +23,14 @@
 // ====================================================
 define( 'SUNRISE', true );
 
-
-
-
 // Required to disable the mu-plugins/dmhendricks__network-subdomain-updater.php-Plugin from loading at all.
 define( 'NETWORK_LOCAL_DOMAIN_DISABLE', true );
-
-
 
 // ===================================================
 // Disable WP Cron
 // Cronjobs are triggered via devgeniem/wp-cron-runner
 // ===================================================
 define( 'DISABLE_WP_CRON', true );
-
 
 // ======================================
 // Manually activate the MAINTENANCE MODE
@@ -66,7 +60,6 @@ if ( constant( 'WP_DEBUG' ) ) {
 	// ======================================
 	@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.debug.log' ); // phpcs:ignore
 
-
 	// ============================================================
 	// SCRIPT_DEBUG is a related constant that will force WordPress
 	// to use the "dev" versions of core CSS and Javascript files
@@ -88,14 +81,11 @@ if ( constant( 'WP_DEBUG' ) ) {
 	// ============================
 	define( 'WP_CACHE', false );
 
-
-
 	// ===========================================
 	// Automatically activate the MAINTENANCE MODE
 	// ===========================================
 	defined( 'FT_MAINTENANCE_MODE' ) || define( 'FT_MAINTENANCE_MODE', true );
 }
-
 
 // =============================================
 // CACHING with 'Cache Enabler' Plugin by KeyCDN

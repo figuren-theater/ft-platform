@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore PSR1.Files.SideEffects.FoundWithSymbols // impossible to do it another way
 /**
  * Default config settings
  *
@@ -43,7 +43,6 @@ define( 'WP_CONTENT_DIR', FT_ROOT_DIR . '/content' );
 define( 'WPMU_PLUGIN_DIR', WP_CONTENT_DIR . '/mu-plugins' ); // Used in sunrise.php.
 define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
 
-
 // Old static relative path maintained for limited backwards compatibility.
 define( 'LANGDIR', 'content/languages' );
 
@@ -61,7 +60,6 @@ define( 'FT_VENDOR_URL', WP_CONTENT_URL . '/v' ); // Symlinked to DOCROOT/vendor
 // ================================================
 define( 'DB_CHARSET', 'utf8mb4' );
 define( 'DB_COLLATE', 'utf8mb4_unicode_520_ci' );
-
 
 // ==============
 // MySQL settings
@@ -126,8 +124,6 @@ define( 'EMPTY_TRASH_DAYS', 60 );
 define( 'FORCE_SSL_ADMIN', true );
 define( 'FORCE_SSL_LOGIN', true );
 
-
-
 // ================
 // Define site host - -  was LAST used here: // define( 'DOMAIN_CURRENT_SITE', rtrim($hostname, '/') ); # disabled to test wp-multi-network
 // IF this could be removed this can also be trashed
@@ -163,7 +159,6 @@ define( 'COOKIEPATH', '' );
  * 2. TESTING for wp-multi-network (is recommended setup)
  */
 define( 'SITECOOKIEPATH', '/' );
-
 
 // =====================
 // WP Multisite Defaults
@@ -219,7 +214,6 @@ if ( true === constant( 'SUBDOMAIN_INSTALL' ) ) {
  */
 define( 'DOMAIN_CURRENT_SITE', rtrim( $hostname, '/' ) );
 
-
 /*
  * Prevent WP Multisite Redirect Loop
  *
@@ -240,9 +234,6 @@ define( 'NOBLOGREDIRECT', '%siteurl%' );
  */
 define( 'NSDU_URL', constant( 'WP_BASE_URL' ) );
 
-
-
-
 // =======================================================
 // Disable all kinds of displaying errors or debug notices
 // Important as fallback for the current infrastructure (June 2023)
@@ -258,7 +249,6 @@ define( 'WP_DEBUG_DISPLAY', false );
 ini_set( 'log_errors', '1' ); // phpcs:ignore
 @ini_set( 'log_errors', 'On' ); // phpcs:ignore
 @ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.error.log' ); // phpcs:ignore
-
 
 // ==============================
 // Set Network-Wide Default Theme

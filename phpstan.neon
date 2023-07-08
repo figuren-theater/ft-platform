@@ -3,13 +3,15 @@
 parameters:
     level: max
     inferPrivatePropertyTypeFromConstructor: true
-    bootstrapFiles:
-        - %currentWorkingDirectory%/vendor/php-stubs/wordpress-globals/wordpress-globals.php
-        - %currentWorkingDirectory%/lib/dotenv/DotEnv.php
-    paths:
-        - %currentWorkingDirectory%/
-        - %currentWorkingDirectory%/content/
+    # bootstrapFiles:
+        # - vendor/php-stubs/wordpress-globals/wordpress-globals.php
+        # - lib/dotenv/DotEnv.php
+    # paths:
+        # - .
+        # - content/
     excludePaths:
-       - %currentWorkingDirectory%/lib/
-       - %currentWorkingDirectory%/vendor/
-       - %currentWorkingDirectory%/content/mu-plugins/FT/
+        analyseAndScan:
+            - content/mu-plugins/FT/
+        analyse:
+            - lib/
+            - vendor/

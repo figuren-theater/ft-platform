@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore PSR1.Files.SideEffects.FoundWithSymbols // impossible to do it another way
 /**
  * WordPress Multi-Environment Config
  *
@@ -38,9 +38,8 @@ define( 'FT_WP_DIR', '/wp' );
 // This may be the only file that is grabbed directly with require because it
 // is so sweet small with no composer package and no git repo and nothin'.
 // ===========================================================================
-require_once FT_ROOT_DIR . '/lib/dotenv/DotEnv.php';
+require_once __DIR__ . '/lib/dotenv/DotEnv.php';
 ( new DevCoder\DotEnv( FT_ROOT_DIR . '/.env' ) )->load();
-
 
 if ( getenv( 'WP_ENVIRONMENT_TYPE' ) !== false ) {
 	/*
@@ -58,13 +57,11 @@ if ( getenv( 'WP_BASE_URL' ) !== false ) {
 }
 defined( 'WP_BASE_URL' ) || define( 'WP_BASE_URL', 'figuren.theater' );
 
-
 // =================
 // Load config files
 // =================
-require_once 'wp-config.default.php';
-require_once 'wp-config.' . WP_ENVIRONMENT_TYPE . '.php';
-
+require_once __DIR__ . '/wp-config.default.php';
+require_once __DIR__ . '/wp-config.' . WP_ENVIRONMENT_TYPE . '.php';
 
 // ====================================================================================================
 // Depend the use of the object-cache.php dropin on the WP_CACHE constant which is set per ENVIRONMENT.
@@ -91,20 +88,15 @@ define( 'WP_SQLITE_OBJECT_CACHE_DISABLED', ! constant( 'WP_CACHE' ) );
 // https://wordpress.org/support/topic/uncaught-exception-unable-to-execute-statement-database-is-locked/#post-16401191
 define( 'WP_SQLITE_OBJECT_CACHE_DB_FILE', '/mnt/php/upload/.ht.object-cache.sqlite' );
 
-
-
 // ===========================================================================
 // CE // default: ABSPATH . 'index.php'
 // ===========================================================================
-define( 'CACHE_ENABLER_INDEX_FILE', FT_ROOT_DIR . '/index.php', );
-
+define( 'CACHE_ENABLER_INDEX_FILE', FT_ROOT_DIR . '/index.php' );
 
 // ===========================================================================
 // Let composer load all namespaced classes.
 // ===========================================================================
 require __DIR__ . '/vendor/autoload.php';
-
-
 
 // ========
 // Clean up

@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore PSR1.Files.SideEffects.FoundWithSymbols // impossible to do it another way
 /**
  * Staging environment config settings
  *
@@ -19,10 +19,6 @@
 
 // Required to disable the mu-plugins/dmhendricks__network-subdomain-updater.php-Plugin from loading at all.
 define( 'NETWORK_LOCAL_DOMAIN_DISABLE', true );
-
-
-
-
 
 // ======================================
 // Manually activate the MAINTENANCE MODE
@@ -48,7 +44,6 @@ if ( constant( 'WP_DEBUG' ) ) {
 	// Define separate php.debug.log Location
 	// ======================================
 	@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.debug.log' ); // phpcs:ignore
-
 
 	// ============================================================
 	// SCRIPT_DEBUG is a related constant that will force WordPress
