@@ -15,6 +15,12 @@
 	<!-- Use figuren.theater Coding Standards -->
 	<rule ref="figurentheater" />
 
+	<!-- Allmost impossible to do wp-configs another way -->
+	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+		<exclude-pattern>wp-config\.php</exclude-pattern>
+		<exclude-pattern>wp-config\.(.*)\.php</exclude-pattern>
+	</rule>
+
 	<!--
 	<rule ref="WordPress.WP.I18n">
 		<properties>

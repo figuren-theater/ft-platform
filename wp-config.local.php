@@ -1,4 +1,4 @@
-<?php // phpcs:ignore PSR1.Files.SideEffects.FoundWithSymbols // impossible to do it another way
+<?php
 /**
  * Development environment config settings
  *
