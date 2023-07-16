@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <ruleset name="ft-platform">
 	<description>Coding standards for ft-platform</description>
-	<!--
-	<file>.</file> -->
+
+	<file>.</file>
 
 	<exclude-pattern>content/mu-plugins/FT/*</exclude-pattern>
 
