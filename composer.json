@@ -86,10 +86,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-maintenance"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-media"
         },
         {
