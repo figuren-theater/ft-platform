@@ -21,6 +21,11 @@
 		<exclude-pattern>wp-config\.(.*)\.php</exclude-pattern>
 	</rule>
 
+	<!-- Ignore the need for a dedicated folder for just the external .env library  -->
+	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
+		<exclude-pattern>lib/dotenv/class-dotenv\.php</exclude-pattern>
+	</rule>
+
 	<!--
 	<rule ref="WordPress.WP.I18n">
 		<properties>
