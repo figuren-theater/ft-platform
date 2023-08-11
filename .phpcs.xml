@@ -21,8 +21,9 @@
 		<exclude-pattern>wp-config\.(.*)\.php</exclude-pattern>
 	</rule>
 
-	<!-- Ignore the need for a dedicated folder for just the external .env library  -->
+	<!-- Ignore the need for a dedicated folder -->
 	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
+		<exclude-pattern>content/mu-plugins/(.*)-ft-platform__(.*)\.php</exclude-pattern>
 		<exclude-pattern>lib/dotenv/class-dotenv\.php</exclude-pattern>
 	</rule>
 
