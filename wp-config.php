@@ -38,7 +38,7 @@ define( 'FT_WP_DIR', '/wp' );
 // This may be the only file that is grabbed directly with require because it
 // is so sweet small with no composer package and no git repo and nothin'.
 // ===========================================================================
-require_once __DIR__ . '/lib/dotenv/DotEnv.php';
+require_once __DIR__ . '/lib/dotenv/class-dotenv.php';
 ( new DevCoder\DotEnv( FT_ROOT_DIR . '/.env' ) )->load();
 
 if ( getenv( 'WP_ENVIRONMENT_TYPE' ) !== false ) {
