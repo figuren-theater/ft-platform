@@ -193,10 +193,10 @@ switch ( rtrim( $hostname, '/' ) ) {
 		break;
 
 	default:
+		// Prepare the absolute default.
+		define( 'SUBDOMAIN_INSTALL', true );
 		break;
 }
-// Prepare the absolute default.
-defined( 'SUBDOMAIN_INSTALL' ) || define( 'SUBDOMAIN_INSTALL', true );
 
 /*
  * 1. TESTING for wp-multi-network (disabled)

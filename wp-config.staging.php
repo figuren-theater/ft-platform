@@ -30,6 +30,8 @@ define( 'NETWORK_LOCAL_DOMAIN_DISABLE', true );
 // ========================
 define( 'WP_DEBUG', false );
 // ========================
+// Normally (without any problems) this will be false all the time, so phpstan is yelling at me
+// @phpstan-ignore-next-line
 if ( constant( 'WP_DEBUG' ) ) {
 
 	// =======================================

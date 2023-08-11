@@ -45,6 +45,8 @@ define( 'WP_DEBUG', false );
 // define( 'WP_CACHE', false );
 
 // ========================
+// Normally (without any problems) this will be false all the time, so phpstan is yelling at me
+// @phpstan-ignore-next-line
 if ( constant( 'WP_DEBUG' ) ) {
 
 	// =======================================

@@ -33,6 +33,8 @@ define( 'DISABLE_WP_CRON', false );
 // ========================
 define( 'WP_DEBUG', true );
 // ========================
+// Locally this will be true all the time, so phpstan is yelling at me
+// @phpstan-ignore-next-line
 if ( constant( 'WP_DEBUG' ) ) {
 
 	// =====================================================
