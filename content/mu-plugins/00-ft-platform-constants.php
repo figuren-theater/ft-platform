@@ -13,16 +13,18 @@ declare(strict_types=1);
 
 namespace Figuren_Theater;
 
-use PRIMARY_NETWORK_ID;
-
 use function get_current_blog_id;
 
 defined( 'ABSPATH' ) || exit;
 
-
-// this is picked up by some logic using the
+// The version-number
+//
+// is picked up by some logic using the
 // 'ft_milestone' taxonomy on
 // https://websites.fuer.figuren.theater
+//
+// and is shown in wp-admin/footer
+// all over the network as well.
 define( 'FT_PLATTFORM_VERSION', '3.0.2' );
 
 // 1   figuren.theater
@@ -30,27 +32,43 @@ define( 'FT_PLATTFORM_VERSION', '3.0.2' );
 // 5   websites.fuer.figuren.theater
 // 12  mein.figuren.theater
 
-// (working since PHP 7)
+/**
+ * An associative array defining core sites and their corresponding identifiers.
+ *
+ * This constant defines core sites using an associative array, where each key represents a site identifier
+ * (blog_id) and its corresponding value represents a site name. The array provides a mapping of site identifiers
+ * to their respective - human-made, and totally un-related- names.
+ *
+ * @var array An associative array of core site identifiers and their names.
+ */
 define(
 	'FT_CORESITES',
-	array(
-		1  => 'root', // this is a blog_id
+	[
+		1  => 'root',
 		4  => 'meta',
 		5  => 'webs',
 		12 => 'mein',
-	)
+	]
 );
 
-// saves one DB request per is_main_network() call
-defined( 'PRIMARY_NETWORK_ID' ) || define( 'PRIMARY_NETWORK_ID', 1 );  // this is a network_id (populated from the sites-table ;)
+// Saves one DB request per is_main_network() call.
+defined( 'PRIMARY_NETWORK_ID' ) || define( 'PRIMARY_NETWORK_ID', 1 );  // This is a network_id (populated from the sites-table ;) .
 
-
-
-
+/**
+ * Checks if a site is a core site based on its identifier.
+ *
+ * This function determines whether a site is a core site by checking if its identifier (blog_id)
+ * exists in the predefined array of core site identifiers. The function accepts an optional site
+ * identifier as a parameter. If no identifier is provided, the function uses the current blog's identifier.
+ *
+ * @param int $site_id The site identifier (blog_id) to be checked. Optional, defaults to the current blog's identifier.
+ * @return bool True if the site is a core site, false otherwise.
+ */
 function is_core_site( int $site_id = 0 ) : bool {
-
+	// If no site identifier is provided, use the current blog's identifier.
 	$site_id = ( 0 === $site_id ) ? get_current_blog_id() : $site_id;
 
+	// Check if the provided site identifier exists in the array of core site identifiers.
 	return in_array(
 		$site_id,
 		array_keys( FT_CORESITES ),
