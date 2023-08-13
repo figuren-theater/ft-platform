@@ -1,10 +1,12 @@
 {
     "name": "figuren-theater/ft-platform",
     "description": "figuren.theater platform",
-    "type": "project",
-    "homepage": "https://websites.fuer.figuren.theater",
-    "keywords": ["wordpress", "multisite"],
     "license": "GPL-3.0-or-later",
+    "type": "project",
+    "keywords": [
+        "wordpress",
+        "multisite"
+    ],
     "authors": [
         {
             "name": "figuren.theater",
@@ -17,10 +19,21 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://websites.fuer.figuren.theater",
     "support": {
         "email": "info@figuren.theater",
         "issues": "https://github.com/figuren-theater/ft-platform/issues",
         "source": "https://github.com/figuren-theater/ft-platform"
+    },
+    "require": {
+        "php": ">=8.0.19",
+        "figuren-theater/ft-core": "^1"
+    },
+    "require-dev": {
+        "figuren-theater/code-quality": "*"
+    },
+    "provide": {
+        "georgestephanis/application-passwords": "*"
     },
     "repositories": [
         {
@@ -57,15 +70,7 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/code-quality"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-admin-ui"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-core"
         },
         {
             "type": "git",
@@ -78,10 +83,6 @@
         {
             "type": "git",
             "url": "https://github.com/figuren-theater/ft-interactive"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-maintenance"
         },
         {
             "type": "git",
@@ -98,10 +99,6 @@
         {
             "type": "git",
             "url": "https://github.com/figuren-theater/ft-onboarding"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/install.php"
         },
         {
             "type": "git",
@@ -141,19 +138,11 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-themes"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/twentytwentytwo-ft-core"
         },
         {
             "type": "git",
             "url": "https://github.com/figuren-theater/twentytwenty-ft-core"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-theming"
         },
         {
             "type": "git",
@@ -181,27 +170,32 @@
         },
         {
             "type": "composer",
-            "url" : "https://wpackagist.org"
+            "url": "https://wpackagist.org"
         },
         {
             "type": "composer",
             "url": "https://packagist.org"
         }
     ],
-    "prefer-stable": true,
     "minimum-stability": "dev",
-    "extra": {
-        "wordpress-install-dir": "wp",
-        "installer-paths": {
-            "content/plugins/{$name}": ["type:wordpress-plugin"],
-            "content/themes/twentytwentytwo-ft-core": ["figuren-theater/twentytwentytwo-ft-core"],
-            "content/themes/figuren-theater": ["figuren-theater/twentytwenty-ft-core"],
-            "content/parent-themes/{$name}": ["type:wordpress-theme"],
-            "content/mu-plugins/Figuren_Theater": ["figuren-theater/deprecated__Figuren_Theater__v2"],
-            "content/mu-plugins/FT/{$name}": ["vendor:figuren-theater"],
-            "content/mu-plugins/{$name}": ["type:wordpress-muplugin"],
-            "wp": ["type:wordpress-core"]
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "johnpbloch/wordpress-core-installer": true,
+            "composer/installers": true,
+            "figuren-theater/*": true,
+            "altis/*": true,
+            "koodimonni/composer-dropin-installer": true,
+            "inpsyde/wp-translation-downloader": true,
+            "phpstan/extension-installer": true,
+            "ergebnis/composer-normalize": true
         },
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
         "dropin-paths": {
             "content": [
                 "package:figuren-theater/ft-privacy:inc/koko-analytics/k.php",
@@ -217,40 +211,42 @@
                 "package:figuren-theater/ft-data:templates/htdocs/vendor/rss-bridge/rss-bridge/config.ini.php"
             ]
         },
+        "installer-paths": {
+            "content/plugins/{$name}": [
+                "type:wordpress-plugin"
+            ],
+            "content/themes/twentytwentytwo-ft-core": [
+                "figuren-theater/twentytwentytwo-ft-core"
+            ],
+            "content/themes/figuren-theater": [
+                "figuren-theater/twentytwenty-ft-core"
+            ],
+            "content/parent-themes/{$name}": [
+                "type:wordpress-theme"
+            ],
+            "content/mu-plugins/Figuren_Theater": [
+                "figuren-theater/deprecated__Figuren_Theater__v2"
+            ],
+            "content/mu-plugins/FT/{$name}": [
+                "vendor:figuren-theater"
+            ],
+            "content/mu-plugins/{$name}": [
+                "type:wordpress-muplugin"
+            ],
+            "wp": [
+                "type:wordpress-core"
+            ]
+        },
+        "wordpress-install-dir": "wp",
         "wp-translation-downloader": {
+            "languageRootDir": "content/languages",
             "languages": [
                 "de_AT",
                 "de_CH",
                 "de_CH_informal",
                 "de_DE",
                 "de_DE_formal"
-            ],
-            "languageRootDir": "content/languages"
+            ]
         }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "sort-packages": true,
-        "preferred-install": "dist",
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "johnpbloch/wordpress-core-installer": true,
-            "composer/installers": true,
-            "figuren-theater/*": true,
-            "altis/*": true,
-            "koodimonni/composer-dropin-installer": true,
-            "inpsyde/wp-translation-downloader": true,
-            "phpstan/extension-installer": true
-        }
-    },
-    "require": {
-        "php": ">=8.0.19",
-        "figuren-theater/ft-core": "^1"
-    },
-    "provide": {
-        "georgestephanis/application-passwords": "*"
-    },
-    "require-dev": {
-        "figuren-theater/code-quality": "dev-main"
     }
 }

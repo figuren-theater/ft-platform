@@ -23,20 +23,14 @@
 // ====================================================
 define( 'SUNRISE', true );
 
-
-
-
 // Required to disable the mu-plugins/dmhendricks__network-subdomain-updater.php-Plugin from loading at all.
 define( 'NETWORK_LOCAL_DOMAIN_DISABLE', true );
-
-
 
 // ===================================================
 // Disable WP Cron
 // Cronjobs are triggered via devgeniem/wp-cron-runner
 // ===================================================
 define( 'DISABLE_WP_CRON', true );
-
 
 // ======================================
 // Manually activate the MAINTENANCE MODE
@@ -51,6 +45,8 @@ define( 'WP_DEBUG', false );
 // define( 'WP_CACHE', false );
 
 // ========================
+// Normally (without any problems) this will be false all the time, so phpstan is yelling at me
+// @phpstan-ignore-next-line
 if ( constant( 'WP_DEBUG' ) ) {
 
 	// =======================================
@@ -59,13 +55,12 @@ if ( constant( 'WP_DEBUG' ) ) {
 	//
 	// USE ONLY in PHP 5.3 or higher
 	// =======================================
-	@ini_set( 'error_reporting', E_ALL ^ E_STRICT ); // phpcs:ignore
+	@error_reporting( E_ALL ^ E_STRICT ); // phpcs:ignore
 
 	// ======================================
 	// Define separate php.debug.log Location
 	// ======================================
 	@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.debug.log' ); // phpcs:ignore
-
 
 	// ============================================================
 	// SCRIPT_DEBUG is a related constant that will force WordPress
@@ -88,14 +83,11 @@ if ( constant( 'WP_DEBUG' ) ) {
 	// ============================
 	define( 'WP_CACHE', false );
 
-
-
 	// ===========================================
 	// Automatically activate the MAINTENANCE MODE
 	// ===========================================
 	defined( 'FT_MAINTENANCE_MODE' ) || define( 'FT_MAINTENANCE_MODE', true );
 }
-
 
 // =============================================
 // CACHING with 'Cache Enabler' Plugin by KeyCDN

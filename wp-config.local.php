@@ -28,12 +28,13 @@ define( 'SUNRISE', true );
 // ===================================================
 define( 'DISABLE_WP_CRON', false );
 
-
 // ========================
 // WordPress Debugging Mode
 // ========================
 define( 'WP_DEBUG', true );
 // ========================
+// Locally this will be true all the time, so phpstan is yelling at me
+// @phpstan-ignore-next-line
 if ( constant( 'WP_DEBUG' ) ) {
 
 	// =====================================================
@@ -53,13 +54,12 @@ if ( constant( 'WP_DEBUG' ) ) {
 	//
 	// USE ONLY in PHP 5.3 or higher
 	// =======================================
-	@ini_set( 'error_reporting', E_ALL ^ E_STRICT ); // phpcs:ignore
+	@error_reporting( E_ALL ^ E_STRICT ); // phpcs:ignore
 
 	// ======================================
 	// Define separate php.debug.log Location
 	// ======================================
 	@ini_set( 'error_log', WP_CONTENT_DIR . '/logs/php.debug.log' ); // phpcs:ignore
-
 
 	// ============================================================
 	// SCRIPT_DEBUG is a related constant that will force WordPress
@@ -77,8 +77,6 @@ if ( constant( 'WP_DEBUG' ) ) {
 	// ====================
 	define( 'SAVEQUERIES', true );
 }
-
-
 
 // ======================================
 // Manually activate the MAINTENANCE MODE
