@@ -39,7 +39,7 @@ define( 'FT_PLATTFORM_VERSION', '3.0.2' );
  * (blog_id) and its corresponding value represents a site name. The array provides a mapping of site identifiers
  * to their respective - human-made, and totally un-related- names.
  *
- * @var array An associative array of core site identifiers and their names.
+ * @var $FT_CORESITES array<int, string> An associative array of core site identifiers and their names.
  */
 define(
 	'FT_CORESITES',
