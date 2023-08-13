@@ -5,6 +5,7 @@
 	<file>.</file>
 
 	<exclude-pattern>content/mu-plugins/FT/*</exclude-pattern>
+	<exclude-pattern>content/mu-plugins/(.*)-ft-platform-(.*)\.php</exclude-pattern>
 
 	<!--
 	<exclude-pattern>*/bin/*</exclude-pattern>
@@ -23,7 +24,6 @@
 
 	<!-- Ignore the need for a dedicated folder -->
 	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
-		<exclude-pattern>content/mu-plugins/(.*)-ft-platform__(.*)\.php</exclude-pattern>
 		<exclude-pattern>lib/dotenv/class-dotenv\.php</exclude-pattern>
 	</rule>
 
