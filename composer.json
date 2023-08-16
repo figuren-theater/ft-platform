@@ -118,10 +118,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-security"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-seo"
         },
         {
