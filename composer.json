@@ -118,10 +118,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-site-editing"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-network-block-editor"
         },
         {
