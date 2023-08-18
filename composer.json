@@ -110,10 +110,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-privacy"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-seo"
         },
         {
