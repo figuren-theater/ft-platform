@@ -96,6 +96,12 @@ define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
 define( 'DISALLOW_FILE_EDIT', true );
 define( 'DISALLOW_FILE_MODS', true );
 
+// ===========================================================
+// Disallow anybody to insert arbitary HTML (or JS) into posts
+// This prevents administrators and editors from doing so.
+// ===========================================================
+define( 'DISALLOW_UNFILTERED_HTML', true );
+
 // =====================================================
 // Set Memory Limit
 // overwrite a typical and possible default value of 32M
