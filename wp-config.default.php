@@ -175,8 +175,7 @@ define( 'MULTISITE', true );
 //
 // Because we want to switch this constant based on the currently queried network
 //
-// @TODO
-// We need a nice way to change this constant.
+// @TODO #13 Find a nice way to change the SUBDOMAIN_INSTALL constant.
 //
 // TESTING for wp-multi-network (disabled, rely on ms_subdomain_constants() )
 // BUT needs to be enabled for ft-core-domaincheck-block (re-enabled)
@@ -185,7 +184,7 @@ switch ( rtrim( $hostname, '/' ) ) {
 
 	case 'mein.figuren.theater':
 	case 'mein.figuren.test':
-		// TODO
+		// TODO #13
 		// The ...case 'mein.puppen.test': --> results in an untrackable error, when Alias is active via Mercator.
 		define( 'SUBDOMAIN_INSTALL', false );
 		break;

@@ -8,7 +8,7 @@
   RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
   # Redirect all http traffic to https
   # Use the lexographically equal operator !=on. If you just use off it gets treated as a regex.
-  RewriteCond %{HTTPS} !=on 
+  RewriteCond %{HTTPS} !=on
   RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
 </IfModule>
 
@@ -51,7 +51,7 @@
 #
 # "__media" is a ugly hardcoded virtual directory
 #
-# ... to help with proper rewrite rules for media below 
+# ... to help with proper rewrite rules for media below
 # the prefered domainname of the currently viewed site.
 #
 # It is used and needs to be updated at the following locations:
@@ -429,7 +429,7 @@ Header set Expires "Thu, 15 Apr 2024 20:00:00 GMT"
 # figuren.theater CLEANUP
 # redirect ugly or unstructured URLs from the beginning
 # into the proper scheme, given in 03/2021
-# 
+#
 # Old scheme:
 # %category%/%year%/%postname%
 # NEW scheme:
@@ -443,11 +443,11 @@ Header set Expires "Thu, 15 Apr 2024 20:00:00 GMT"
  RewriteCond %{HTTP_HOST} ^meta\.figuren\.theater [NC,OR]
  RewriteCond %{HTTP_HOST} ^meta\.figuren\.test [NC]
 
-  
+
   # created with help from https://yoast.com/research/permalink-helper.php
   # 1. Group: category
   # 2. Group: year
-  # 3. Group: post_title !! in our new scheme, this 3rd param 
+  # 3. Group: post_title !! in our new scheme, this 3rd param
   #                         is representing the monthly archives,
   #                         so make sure to prevent rewriting thoose.
   RewriteRule ^([^/]+)/([0-9]{4})/([^/\d]+)/$ ?name=$3 [L]
@@ -554,17 +554,17 @@ Header set Expires "Thu, 15 Apr 2024 20:00:00 GMT"
 
 # ----------------------------------------------------------------------
 # Prevent Username Enumeration
-# 
+#
 # like: https://domain.com/?author=1
-# 
-# The request will be redirected 
-# to the author’s page with the corresponding user ID, 
+#
+# The request will be redirected
+# to the author’s page with the corresponding user ID,
 # what we DON'T want.
-# 
+#
 # https://domain.com/author/admin_username
-# 
+#
 # We want to block all author scan attacks!
-# 
+#
 # Except admin requests like for "My posts"
 # wp-admin/edit.php?post_type=post&author=1
 # This should be OK!
@@ -575,7 +575,7 @@ Header set Expires "Thu, 15 Apr 2024 20:00:00 GMT"
   RewriteCond %{REQUEST_URI} !(wp-admin) [NC]
   RewriteCond %{QUERY_STRING} author=\d
 
-  # send 403 Forbidden 
+  # send 403 Forbidden
   RewriteRule ^ - [L,R=403]
 </IfModule>
 
@@ -588,7 +588,7 @@ Header set Expires "Thu, 15 Apr 2024 20:00:00 GMT"
 
 <IfModule mod_rewrite.c>
 
-# WP 3.5+ Version 
+# WP 3.5+ Version
 # @see http://codex.wordpress.org/Multisite_Network_Administration#.htaccess_and_Mod_Rewrite
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -609,10 +609,10 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 # RewriteRule ^(wp-(content|admin|includes).*) wp/$1 [L]
 # (TEST: MULTI NETWORK)
-# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) wp/$2 [L] 
-# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-includes.*) wp/$2 [L] 
-# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp/)?(wp-(content|admin|includes).*) $3 [L] 
-RewriteRule ^([_0-9a-zA-Z-\/]+/)?(wp-(content|admin|includes).*) wp/$2 [L] 
+# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) wp/$2 [L]
+# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-includes.*) wp/$2 [L]
+# RewriteRule ^([_0-9a-zA-Z-]+/)?(wp/)?(wp-(content|admin|includes).*) $3 [L]
+RewriteRule ^([_0-9a-zA-Z-\/]+/)?(wp-(content|admin|includes).*) wp/$2 [L]
 
 
 # RewriteRule ^(.*\.php)$ wp/$1 [L]
@@ -626,7 +626,7 @@ RewriteRule . index.php [L]
 
 # ----------------------------------------------------------------------
 # Protect Important WP and Server Files
-# 
+#
 # Disables access to ...
 # 1. old and (hope-) fully unused xmlrpc API
 # 2. any log files
@@ -640,7 +640,7 @@ RewriteRule . index.php [L]
 
 
 # ----------------------------------------------------------------------
-# HTTP Headers for better security 
+# HTTP Headers for better security
 # ----------------------------------------------------------------------
 
 <IfModule mod_headers.c>
@@ -654,40 +654,40 @@ RewriteRule . index.php [L]
 
   #
   Header set X-XSS-Protection "1; mode=block"
-  
+
   # Deactivates MIME Sniffing in Internet Explorer and Chrome.
   #
   Header set X-Content-Type-Options nosniff
-  
+
   #
   # https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess#frame_options
   # SAMEORIGIN or DENY
-  # 
+  #
   # this prevents oEmbeds of our content to work properly
-  # @TODO find another solution
-  # Header set X-Frame-Options SAMEORIGIN 
-  
+  # @TODO #12 find a finer grained solution to
+  # Header set X-Frame-Options SAMEORIGIN
+
   # Referrer Policy
   # https://infosec.mozilla.org/guidelines/web_security#referrer-policy
-  # 
-  # DISABLED to keep Referrers for the stats 
-  # Header set Referrer-Policy: no-referrer-when-downgrade 
+  #
+  # DISABLED to keep Referrers for the stats
+  # Header set Referrer-Policy: no-referrer-when-downgrade
 
   # https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess#content_security_policy_csp
-  # 
-  # To make your CSP implementation easier, you can use an online CSP header generator. 
+  #
+  # To make your CSP implementation easier, you can use an online CSP header generator.
   # https://report-uri.com/home/generate/
-  # 
+  #
   # You should also use a validator to make sure your header does what you want it to do.
   # https://csp-evaluator.withgoogle.com/
-  # 
+  #
   #   Content-Security-Policy "default-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
-    
+
   # Permmisions (former:Feature) Policy
   # https://developer.chrome.com/docs/privacy-sandbox/permissions-policy/
   # https://github.com/w3c/webappsec-permissions-policy/blob/main/features.md
   # https://www.permissionspolicy.com/
-  
+
 
   # CLEANUP
   Header always unset X-Distributor
