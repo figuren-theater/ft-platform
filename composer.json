@@ -45,8 +45,8 @@
             "url": "https://github.com/carstingaxion/feed-pull"
         },
         {
-          "type": "git",
-          "url": "https://github.com/carstingaxion/Mercator-GUI"
+            "type": "git",
+            "url": "https://github.com/carstingaxion/Mercator-GUI"
         },
         {
             "type": "git",
@@ -91,10 +91,6 @@
         {
             "type": "git",
             "url": "https://github.com/figuren-theater/ft-onboarding"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-performance"
         },
         {
             "type": "git",
