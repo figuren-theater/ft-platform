@@ -46,6 +46,10 @@
         },
         {
             "type": "git",
+            "url": "https://github.com/carstingaxion/Mercator-GUI"
+        },
+        {
+            "type": "git",
             "url": "https://github.com/carstingaxion/wordpress-cache-control"
         },
         {
@@ -70,23 +74,11 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-admin-ui"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-core-block-domaincheck"
         },
         {
             "type": "git",
             "url": "https://github.com/figuren-theater/ft-data"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-interactive"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-media"
         },
         {
             "type": "git",
@@ -102,35 +94,7 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-options"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-performance"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-platform-collection"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-privacy"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-routes"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-security"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-seo"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-site-editing"
         },
         {
             "type": "git",

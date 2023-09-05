@@ -31,7 +31,7 @@ const FT_PACKAGES = [
 	'ft-maintenance',
 	'ft-media',
 	'ft-onboarding',
-	// 'ft-options',
+	// 'ft-options', // Loaded via deprecated__Figuren_Theater__v2/Figuren_Theater.php // @todo ...
 	'ft-performance',
 	'ft-privacy',
 	'ft-routes',
