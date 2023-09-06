@@ -182,9 +182,6 @@
             "content/themes/twentytwentytwo-ft-core": [
                 "figuren-theater/twentytwentytwo-ft-core"
             ],
-            "content/themes/figuren-theater": [
-                "figuren-theater/twentytwenty-ft-core"
-            ],
             "content/parent-themes/{$name}": [
                 "type:wordpress-theme"
             ],
