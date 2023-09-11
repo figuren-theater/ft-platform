@@ -3,7 +3,7 @@
  * Plugin Name:  must-use-loader for the figuren.theater plattform
  * Description:  Autoloads ft-modules from subfolders
  * Plugin URI:   https://github.com/figuren-theater/ft-core
- * Version:      2023.01.22
+ * Version:      2023.09.11
  * Author:       figuren.theater
  * Author URI:   https://figuren.theater
  * License:      GPL-3.0-or-later
@@ -31,7 +31,7 @@ const FT_PACKAGES = [
 	'ft-maintenance',
 	'ft-media',
 	'ft-onboarding',
-	// 'ft-options', // Loaded via deprecated__Figuren_Theater__v2/Figuren_Theater.php // @todo ...
+	'ft-options',
 	'ft-performance',
 	'ft-privacy',
 	'ft-routes',

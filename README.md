@@ -24,18 +24,13 @@
 
 ## Install the figuren.theater platform
 
-1. Add this repository to your `composer.json`
-    ```json
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-platform-collection"
-        }
-    ]
+1. Clone the repository into a new *htdocs* folder (or choose whatever you prefer)
+    ```sh
+	git clone https://github.com/figuren-theater/ft-platform.git htdocs
     ```
 2. Install via command line
     ```sh
-    composer require figuren-theater/ft-platform
+    composer install --no-dev
     composer require figuren-theater/ft-platform-collection
     ```
 3. Save the `.env.example` with all needed DB credentials, API keys, etc. as `.env` into the *new docroot*.
