@@ -17,15 +17,29 @@ use function get_current_blog_id;
 
 defined( 'ABSPATH' ) || exit;
 
-// The version-number
-//
-// is picked up by some logic using the
-// 'ft_milestone' taxonomy on
-// https://websites.fuer.figuren.theater
-//
-// and is shown in wp-admin/footer
-// all over the network as well.
-define( 'FT_PLATTFORM_VERSION', '3.0.2' );
+/**
+ * Get Version number of ft-platform
+ *
+ * Returns a string with the semver formatted version number, which gets set automatically on each Release (via github).
+ *
+ * @since 3.2 Deprecated former FT_PLATTFORM_VERSION constant in favor of this function.
+ *
+ * @return string
+ */
+function get_platform_version() : string {
+
+	// Retrieve metadata from a file.
+	$version = get_file_data(
+		\FT_ROOT_DIR . '/plugin.php',
+		[
+			'Version' => 'Version',
+		]
+	);
+	if ( ! isset( $version['Version'] ) ) {
+		return '';
+	}
+	return $version['Version'];
+}
 
 // 1   figuren.theater
 // 4   meta.figuren.theater
