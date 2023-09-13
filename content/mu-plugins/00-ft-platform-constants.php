@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 3.2 Deprecated former FT_PLATTFORM_VERSION constant in favor of this function.
  *
- * @return string
+ * @return string String with the semver formatted version number.
  */
 function get_platform_version() : string {
 
