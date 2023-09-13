@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.1.1...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.1.2...HEAD)
+
+## [3.1.2](https://github.com/figuren-theater/ft-platform/compare/3.1.1...3.1.2) - 2023-09-13
+
+### 🐛 Fixed
+
+- Cleanup ([#20](https://github.com/figuren-theater/ft-platform/pull/20))
+- Deprecate FT_PLATTFORM_VERSION constant ([#19](https://github.com/figuren-theater/ft-platform/pull/19))
+- NEW Moved the ft-options bootstrap into ft-platform (like all others) ([#18](https://github.com/figuren-theater/ft-platform/pull/18))
 
 ## [3.1.1](https://github.com/figuren-theater/ft-platform/compare/3.1.0...3.1.1) - 2023-09-08
 
