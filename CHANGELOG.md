@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.1.2...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.1.3...HEAD)
+
+## [3.1.3](https://github.com/figuren-theater/ft-platform/compare/3.1.2...3.1.3) - 2023-09-14
+
+### 🐛 Fixed
+
+- Fix missing SUBDOMAIN_INSTALL constant not being set for websites.fuer.figuren.theater|.test ([#21](https://github.com/figuren-theater/ft-platform/pull/21))
+
+### Dependency Updates & Maintenance
+
+- Upgrading figuren-theater/code-quality (0.7.0 => 0.7.1) AND its deps ([#22](https://github.com/figuren-theater/ft-platform/pull/22))
 
 ## [3.1.2](https://github.com/figuren-theater/ft-platform/compare/3.1.1...3.1.2) - 2023-09-13
 
