@@ -191,10 +191,12 @@ switch ( rtrim( $hostname, '/' ) ) {
 
 	case 'websites.fuer.figuren.theater':
 	case 'websites.fuer.figuren.test':
+		$subdomain_install = true;
 		// Only for our '/demos' network.
 		if ( isset( $_SERVER['REQUEST_URI'] ) && 0 === strpos( (string) getenv( 'REQUEST_URI' ), '/demos' ) ) {
-			define( 'SUBDOMAIN_INSTALL', false );
+			$subdomain_install = false;
 		}
+		define( 'SUBDOMAIN_INSTALL', $subdomain_install );
 		break;
 
 	default:
