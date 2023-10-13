@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.1.3...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.1.4...HEAD)
+
+## [3.1.4](https://github.com/figuren-theater/ft-platform/compare/3.1.3...3.1.4) - 2023-10-13
+
+### Security
+
+- Update figuren-theater/ft-platform-collection from 0.1.5 to 0.1.6, which includes the WP 6.3.2 security-update.
+
+### Dependency Updates & Maintenance
+
+- Update dev dependencies ([#24](https://github.com/figuren-theater/ft-platform/pull/24))
+- Bump actions/checkout from 2 to 4 ([#16](https://github.com/figuren-theater/ft-platform/pull/16))
+- Bump figuren-theater/code-quality from 0.7.1 to 0.8.1 ([#23](https://github.com/figuren-theater/ft-platform/pull/23))
 
 ## [3.1.3](https://github.com/figuren-theater/ft-platform/compare/3.1.2...3.1.3) - 2023-09-14
 
