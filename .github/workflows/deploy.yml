@@ -45,7 +45,7 @@ jobs:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install all platform dependencies
-        run: composer require figuren-theater/ft-platform-collection --prefer-dist --no-interaction
+        run: composer require -W figuren-theater/ft-platform-collection:dev-main
 
       # Help moving files (which koodimoni/dropin-installer is not capable for, see #11)
       - name: Copy files (accompanying koodimoni)
