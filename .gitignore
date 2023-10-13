@@ -1,9 +1,38 @@
-.DS_Store
-Thumbs.db
-wp-cli.local.yml
-node_modules/
+/node_modules
+/vendor
 *.sql
 *.tar.gz
 *.zip
+/wiki
+.vscode
 
-/vendor/
+# Generated via bin/transform-readme.php
+/readme.txt
+/.wp-env.override.json
+
+# misc
+.DS_Store
+Thumbs.db
+
+# is created during composer install,
+# when package is tested
+# and not running within ft-platform
+/content/install.php
+/content/k.php
+/content/php-error.php
+/content/sunrise.php
+
+/content/languages/*
+/content/parent-themes/*/
+/content/plugins/*/
+/content/themes/*/
+/content/mu-plugins/Figuren_Theater
+/content/mu-plugins/FT/*
+/content/mu-plugins/mu-per-blog/*
+!/content/mu-plugins/mu-per-blog/00
+!/content/mu-plugins/mu-per-blog/README.md
+
+/content/mu-plugins/mu-per-network/*
+
+/wp/*
+wp-translation-downloader.lock
