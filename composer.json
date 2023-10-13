@@ -98,10 +98,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-network-block-editor"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/twentytwentytwo-ft-core"
         },
         {
