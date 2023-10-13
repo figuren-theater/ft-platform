@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.1.5...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.1.6...HEAD)
+
+## [3.1.6](https://github.com/figuren-theater/ft-platform/compare/3.1.5...3.1.6) - 2023-10-13
+
+- Deploy with https://github.com/figuren-theater/ft-platform-collection/releases/tag/0.1.7
 
 ## [3.1.5](https://github.com/figuren-theater/ft-platform/compare/3.1.4...3.1.5) - 2023-10-13
 
