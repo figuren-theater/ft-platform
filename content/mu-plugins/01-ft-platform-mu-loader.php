@@ -38,6 +38,7 @@ const FT_PACKAGES = [
 	'ft-security',
 	'ft-seo',
 	'ft-site-editing',
+	'ft-theater',
 	'ft-theming',
 ];
 
