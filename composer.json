@@ -26,7 +26,7 @@
         "source": "https://github.com/figuren-theater/ft-platform"
     },
     "require": {
-        "php": ">=8.1.0",
+        "php": ">=8.0.30",
         "figuren-theater/ft-core": "1.2.21"
     },
     "require-dev": {
