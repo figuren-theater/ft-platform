@@ -55,6 +55,7 @@
         - [ft-security](https://github.com/figuren-theater/ft-security)
         - [ft-seo](https://github.com/figuren-theater/ft-seo)
         - [ft-site-editing](https://github.com/figuren-theater/ft-site-editing)
+        - [ft-theater](https://github.com/figuren-theater/ft-theater)
         - [ft-themes](https://github.com/figuren-theater/ft-themes)
         - [ft-theming](https://github.com/figuren-theater/ft-theming)
 
