@@ -26,7 +26,7 @@
         "source": "https://github.com/figuren-theater/ft-platform"
     },
     "require": {
-        "php": ">=8.1.0",
+        "php": ">=8.0.30",
         "figuren-theater/ft-core": "1.2.21"
     },
     "require-dev": {
@@ -137,15 +137,15 @@
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "johnpbloch/wordpress-core-installer": true,
-            "composer/installers": true,
-            "figuren-theater/*": true,
             "altis/*": true,
-            "koodimonni/composer-dropin-installer": true,
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "figuren-theater/*": true,
             "inpsyde/wp-translation-downloader": true,
-            "phpstan/extension-installer": true,
-            "ergebnis/composer-normalize": true
+            "johnpbloch/wordpress-core-installer": true,
+            "koodimonni/composer-dropin-installer": true,
+            "phpstan/extension-installer": true
         },
         "optimize-autoloader": true,
         "preferred-install": "dist",
