@@ -55,7 +55,7 @@ jobs:
 
 
       - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           dry-run: true
           server: ${{ secrets.FTP_SERVER }}
