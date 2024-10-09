@@ -39,8 +39,9 @@
 ## Structure
 - [ft-platform](https://github.com/figuren-theater/ft-platform/)
     - [ft-core](https://github.com/figuren-theater/ft-core/)
-        - [WordPress](https://www.wordpress.org/)
+        - [altis-core](https://github.com/figuren-theater/altis-core/)
     - [ft-platform-collection](https://github.com/figuren-theater/ft-platform-collection/)
+        - [WordPress](https://www.wordpress.org/)
         - [ft-admin-ui](https://github.com/figuren-theater/ft-admin-ui)
         - [ft-coresites](https://github.com/figuren-theater/ft-coresites)
         - [ft-data](https://github.com/figuren-theater/ft-data)
