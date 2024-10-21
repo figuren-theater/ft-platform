@@ -178,7 +178,7 @@ AddDefaultCharset UTF-8
 </IfModule>
 
 <IfModule mod_headers.c>
-   SetEnvIf Origin "https://(assets|developer|www|mein|meta|websites\.fuer|juliaraab)?(\.)?(figuren|puppen|katharina-muschiol)?(\.)?(test|theater|de)$" AccessControlAllowOrigin=$0
+   SetEnvIf Origin "https://(assets|developer|www|mein|meta|websites\.fuer|juliaraab|oma)?(\.)?(figuren|puppen|katharina-muschiol|juliaraab)?(\.)?(test|theater|de)$" AccessControlAllowOrigin=$0
    Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
    Header set Access-Control-Allow-Credentials true
 </IfModule>
