@@ -1,5 +1,13 @@
 <?php
 /**
+ * CONSTANTS for whole network for puppeteers figuren.theater
+ *
+ * @package           figuren-theater/ft-platform
+ * @author            figuren.theater
+ * @copyright         2023 figuren.theater
+ * @license           GPL-3.0-or-later
+ *
+ * @wordpress-plugin
  * Plugin Name:  figuren.theater NETWORK | CONSTANTS for whole figuren.theater network
  * Description:
  * Plugin URI:
@@ -26,7 +34,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @return string String with the semver formatted version number.
  */
-function get_platform_version() : string {
+function get_platform_version(): string {
 
 	// Retrieve metadata from a file.
 	$version = get_file_data(
@@ -66,7 +74,8 @@ define(
 );
 
 // Saves one DB request per is_main_network() call.
-defined( 'PRIMARY_NETWORK_ID' ) || define( 'PRIMARY_NETWORK_ID', 1 );  // This is a network_id (populated from the sites-table ;) .
+// This is a network_id (populated from the sites-table ;) .
+defined( 'PRIMARY_NETWORK_ID' ) || define( 'PRIMARY_NETWORK_ID', 1 ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 
 /**
  * Checks if a site is a core site based on its identifier.
@@ -78,7 +87,7 @@ defined( 'PRIMARY_NETWORK_ID' ) || define( 'PRIMARY_NETWORK_ID', 1 );  // This i
  * @param int $site_id The site identifier (blog_id) to be checked. Optional, defaults to the current blog's identifier.
  * @return bool True if the site is a core site, false otherwise.
  */
-function is_core_site( int $site_id = 0 ) : bool {
+function is_core_site( int $site_id = 0 ): bool {
 	// If no site identifier is provided, use the current blog's identifier.
 	$site_id = ( 0 === $site_id ) ? get_current_blog_id() : $site_id;
 
@@ -102,7 +111,7 @@ function is_core_site( int $site_id = 0 ) : bool {
  *
  * @return boolean
  */
-function is_ft_core_site( string $subdomain_key, int $blog_id = 0 ) : bool {
+function is_ft_core_site( string $subdomain_key, int $blog_id = 0 ): bool {
 	$coresites = array_flip( FT_CORESITES );
 	$blog_id   = ( 0 === $blog_id ) ? get_current_blog_id() : $blog_id;
 

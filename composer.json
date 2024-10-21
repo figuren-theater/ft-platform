@@ -82,19 +82,7 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-network-block-patterns"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/ft-network-sourcelinks"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-onboarding"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-seo"
         },
         {
             "type": "git",
