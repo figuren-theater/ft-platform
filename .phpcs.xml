@@ -18,6 +18,7 @@
 	<exclude-pattern>content/k\.php</exclude-pattern>
 	<exclude-pattern>content/php-error\.php</exclude-pattern>
 	<exclude-pattern>content/sunrise\.php</exclude-pattern>
+	<exclude-pattern>lib/dotenv/class-dotenv\.php</exclude-pattern>
 
 	<!-- Use figuren.theater Coding Standards -->
 	<rule ref="figurentheater" />
@@ -58,18 +59,5 @@
 		<exclude-pattern>content/*/index\.php</exclude-pattern>
 		<exclude-pattern>content/index\.php</exclude-pattern>
 	</rule>
-
-
-
-	<rule ref="Universal.Classes.RequireFinalClass.NonFinalClassFound">
-		<exclude-pattern>lib/dotenv/*</exclude-pattern>
-	</rule>
-
-	<!-- Uncomment again when https://github.com/figuren-theater/coding-standards/issues/15 is fixed !
-
-	     Ignore the need for a dedicated folder 
-	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
-		<exclude-pattern>lib/dotenv/class-dotenv\.php</exclude-pattern>
-	</rule>-->
 
 </ruleset>
