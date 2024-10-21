@@ -1,5 +1,13 @@
 <?php
 /**
+ * CONSTANTS for whole network for puppeteers figuren.theater
+ *
+ * @package           figuren-theater/ft-platform
+ * @author            figuren.theater
+ * @copyright         2023 figuren.theater
+ * @license           GPL-3.0-or-later
+ *
+ * @wordpress-plugin
  * Plugin Name:  figuren.theater NETWORK | CONSTANTS for whole figuren.theater network
  * Description:
  * Plugin URI:
@@ -66,7 +74,8 @@ define(
 );
 
 // Saves one DB request per is_main_network() call.
-defined( 'PRIMARY_NETWORK_ID' ) || define( 'PRIMARY_NETWORK_ID', 1 );  // This is a network_id (populated from the sites-table ;) .
+// This is a network_id (populated from the sites-table ;) .
+defined( 'PRIMARY_NETWORK_ID' ) || define( 'PRIMARY_NETWORK_ID', 1 ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 
 /**
  * Checks if a site is a core site based on its identifier.
