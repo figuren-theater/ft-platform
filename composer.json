@@ -86,14 +86,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/figuren-theater/ft-onboarding"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-seo"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/figuren-theater/twentytwentytwo-ft-core"
         },
         {
