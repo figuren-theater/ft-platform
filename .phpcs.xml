@@ -60,4 +60,12 @@
 		<exclude-pattern>content/index\.php</exclude-pattern>
 	</rule>
 
+
+
+	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+		<exclude-pattern>content/mu-plugins/00-ft-platform-constants\.php</exclude-pattern>
+		<exclude-pattern>content/mu-plugins/01-ft-platform-mu-loader\.php</exclude-pattern>
+	</rule>
+
+
 </ruleset>
