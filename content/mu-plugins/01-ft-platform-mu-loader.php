@@ -53,7 +53,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @return void
  */
-function require_platform_files() :void {
+function require_platform_files(): void {
 
 	// Load modules one by one,
 	// should|could be done by composer.
@@ -89,7 +89,6 @@ function require_platform_files() :void {
 	do_action( 'altis.loaded_autoloader' );
 
 	do_action( __NAMESPACE__ . '\\loaded', FT::site() );
-
 }
 require_platform_files();
 
@@ -98,11 +97,11 @@ require_platform_files();
  *
  * @todo https://github.com/figuren-theater/ft-core/issues/1
  *
- * @param   string    $mofile [description]
- * @param   string    $domain [description]
+ * @param   string $mofile [description]
+ * @param   string $domain [description]
  * @return  string            [description]
  */
-function load_textdomain_mofile( string $mofile, string $domain ) : string {
+function load_textdomain_mofile( string $mofile, string $domain ): string {
 
 	// Looking for a weird path-structure: "/FULL-ABSPATH-2-PLUGINS-DIR/FULL-ABSPATH-2-VENDOR-DIR" !
 	$search = WP_PLUGIN_DIR . FT_VENDOR_DIR;
@@ -114,5 +113,3 @@ function load_textdomain_mofile( string $mofile, string $domain ) : string {
 	return $mofile;
 }
 add_filter( 'load_textdomain_mofile', __NAMESPACE__ . '\\load_textdomain_mofile', 1000, 2 );
-
-

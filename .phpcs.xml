@@ -3,18 +3,32 @@
 	<description>Coding standards for ft-platform</description>
 
 	<file>.</file>
-
-	<exclude-pattern>content/mu-plugins/FT/*</exclude-pattern>
-	<exclude-pattern>content/mu-plugins/(.*)-ft-platform-(.*)\.php</exclude-pattern>
-
+	<arg name="basepath" value="./"/><!-- Strip the file paths down to the relevant bit -->
+	
 	<!--
-	<exclude-pattern>*/bin/*</exclude-pattern>
-	<exclude-pattern>*/tests/*</exclude-pattern>
-	<exclude-pattern>*/vendor/*</exclude-pattern>
+	Exclude everything, that is created during composer install,
+	when package is tested and developed.
 	-->
+	<exclude-pattern>content/mu-plugins/mu-per-*</exclude-pattern>
+	<exclude-pattern>content/mu-plugins/Figuren_Theater/*</exclude-pattern>
+	<exclude-pattern>content/mu-plugins/FT/*</exclude-pattern>
+	<exclude-pattern>content/plugins/*/</exclude-pattern>
+	<exclude-pattern>content/themes/*/</exclude-pattern>
+	<exclude-pattern>content/install\.php</exclude-pattern>
+	<exclude-pattern>content/k\.php</exclude-pattern>
+	<exclude-pattern>content/php-error\.php</exclude-pattern>
+	<exclude-pattern>content/sunrise\.php</exclude-pattern>
 
 	<!-- Use figuren.theater Coding Standards -->
 	<rule ref="figurentheater" />
+
+	<!-- Allmost impossible to do wp-configs another way -->
+	<rule ref="WordPress.WP.GlobalVariablesOverride.Prohibited">
+		<exclude-pattern>wp-config.default\.php</exclude-pattern>
+	</rule>
+	<rule ref="VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable">
+		<exclude-pattern>wp-config.default\.php</exclude-pattern>
+	</rule>
 
 	<!-- Allmost impossible to do wp-configs another way -->
 	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
@@ -22,18 +36,40 @@
 		<exclude-pattern>wp-config\.(.*)\.php</exclude-pattern>
 	</rule>
 
-	<!-- Ignore the need for a dedicated folder -->
-	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
-		<exclude-pattern>lib/dotenv/class-dotenv\.php</exclude-pattern>
+	<!-- Allmost impossible to do wp-configs another way -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound">
+		<exclude-pattern>wp-config\.php</exclude-pattern>
+		<exclude-pattern>wp-config\.(.*)\.php</exclude-pattern>
 	</rule>
 
-	<!--
-	<rule ref="WordPress.WP.I18n">
-		<properties>
-			<property name="text_domain" type="array">
-				<element value="figurentheater"/>
-			</property>
-		</properties>
-	</rule> -->
+	<!-- Allmost impossible to do wp-configs another way -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound">
+		<exclude-pattern>index\.php</exclude-pattern>
+		<exclude-pattern>wp-config\.php</exclude-pattern>
+		<exclude-pattern>wp-config\.(.*)\.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+		<exclude-pattern>wp-config\.(.*)\.php</exclude-pattern>
+	</rule>
+
+	<!-- Silence files dont need package infos -->
+	<rule ref="Squiz.Commenting.FileComment.MissingPackageTag">
+		<exclude-pattern>content/*/index\.php</exclude-pattern>
+		<exclude-pattern>content/index\.php</exclude-pattern>
+	</rule>
+
+
+
+	<rule ref="Universal.Classes.RequireFinalClass.NonFinalClassFound">
+		<exclude-pattern>lib/dotenv/*</exclude-pattern>
+	</rule>
+
+	<!-- Uncomment again when https://github.com/figuren-theater/coding-standards/issues/15 is fixed !
+
+	     Ignore the need for a dedicated folder 
+	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
+		<exclude-pattern>lib/dotenv/class-dotenv\.php</exclude-pattern>
+	</rule>-->
 
 </ruleset>

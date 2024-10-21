@@ -3,6 +3,8 @@
  * Prepare environment variables from .env file
  *
  * @source  https://dev.to/fadymr/php-create-your-own-php-dotenv-3k2i
+ * 
+ * @package figuren-theater/ft-platform
  */
 
 namespace DevCoder;
@@ -32,7 +34,7 @@ class DotEnv {
 	 */
 	public function __construct( string $path ) {
 		if ( ! file_exists( $path ) ) {
-			throw new \InvalidArgumentException( sprintf( '%s does not exist', $path ) );
+			throw new \InvalidArgumentException( sprintf( '%s does not exist', \addslashes( $path ) ) );
 		}
 		$this->path = $path;
 	}
@@ -48,7 +50,7 @@ class DotEnv {
 	 *
 	 * @return void
 	 */
-	public function load() :void {
+	public function load(): void {
 		if ( ! is_readable( $this->path ) ) {
 			throw new \RuntimeException( sprintf( '%s file is not readable', $this->path ) );
 		}
@@ -60,13 +62,13 @@ class DotEnv {
 				continue;
 			}
 
-			list($name, $value) = explode( '=', $line, 2 );
-			$name = trim( $name );
-			$value = trim( $value );
+			$data  = explode( '=', $line, 2 );
+			$name  = trim( $data[0] );
+			$value = trim( $data[1] );
 
 			if ( ! array_key_exists( $name, $_SERVER ) && ! array_key_exists( $name, $_ENV ) ) {
 				putenv( sprintf( '%s=%s', $name, $value ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_putenv
-				$_ENV[ $name ] = $value;
+				$_ENV[ $name ]    = $value;
 				$_SERVER[ $name ] = $value;
 			}
 		}
