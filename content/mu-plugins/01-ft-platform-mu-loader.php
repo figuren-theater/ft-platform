@@ -1,5 +1,13 @@
 <?php
 /**
+ * The must-use-loader for the figuren.theater plattform
+ *
+ * @package           figuren-theater/ft-platform
+ * @author            figuren.theater
+ * @copyright         2023 figuren.theater
+ * @license           GPL-3.0-or-later
+ *
+ * @wordpress-plugin
  * Plugin Name:  must-use-loader for the figuren.theater plattform
  * Description:  Autoloads ft-modules from subfolders
  * Plugin URI:   https://github.com/figuren-theater/ft-core
@@ -14,14 +22,12 @@ declare(strict_types=1);
 namespace Figuren_Theater;
 
 use FT_VENDOR_DIR;
-
+use WPMU_PLUGIN_DIR;
+use WP_PLUGIN_DIR;
 use function add_filter;
-
 use function do_action;
 use function get_current_blog_id;
 use function get_current_network_id;
-use WPMU_PLUGIN_DIR;
-use WP_PLUGIN_DIR;
 
 const FT_PACKAGES = [
 	'ft-admin-ui',
@@ -86,22 +92,21 @@ function require_platform_files(): void {
 	do_action( __NAMESPACE__ . '\\init', FT::site() );
 
 	// Allow for and trigger module registration.
-	do_action( 'altis.loaded_autoloader' );
+	do_action( 'altis.loaded_autoloader' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 	do_action( __NAMESPACE__ . '\\loaded', FT::site() );
 }
 require_platform_files();
 
 /**
- * !!!
+ * Filters MO file path for loading translations for a specific text domain.
  *
- * @todo https://github.com/figuren-theater/ft-core/issues/1
+ * @todo https://github.com/figuren-theater/ft-core/issues/1 !!!
  *
- * @param   string $mofile [description]
- * @param   string $domain [description]
- * @return  string            [description]
+ * @param string $mofile Path to the MO file.
+ * @return string Path to the MO file.
  */
-function load_textdomain_mofile( string $mofile, string $domain ): string {
+function load_textdomain_mofile( string $mofile ): string {
 
 	// Looking for a weird path-structure: "/FULL-ABSPATH-2-PLUGINS-DIR/FULL-ABSPATH-2-VENDOR-DIR" !
 	$search = WP_PLUGIN_DIR . FT_VENDOR_DIR;
@@ -112,4 +117,4 @@ function load_textdomain_mofile( string $mofile, string $domain ): string {
 
 	return $mofile;
 }
-add_filter( 'load_textdomain_mofile', __NAMESPACE__ . '\\load_textdomain_mofile', 1000, 2 );
+add_filter( 'load_textdomain_mofile', __NAMESPACE__ . '\\load_textdomain_mofile', 1000 );
