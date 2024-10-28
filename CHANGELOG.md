@@ -2,7 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.2.1...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.3.0...HEAD)
+
+## [3.3.0](https://github.com/figuren-theater/ft-platform/compare/3.2.1...3.3.0) - 2024-10-28
+
+https://github.com/figuren-theater/ft-platform-collection/releases/tag/0.3.0
+
+- Update README with platform structure  ([#31](https://github.com/figuren-theater/ft-platform/pull/31))
+
+### Dependency Updates & Maintenance
+
+- Bump figuren-theater/code-quality from 1.1.1 to 1.2.1 ([#33](https://github.com/figuren-theater/ft-platform/pull/33))
+- Bump SamKirkland/FTP-Deploy-Action from 4.3.4 to 4.3.5 ([#32](https://github.com/figuren-theater/ft-platform/pull/32))
+- Bump figuren-theater/code-quality from 0.9.0 to 1.1.1 ([#30](https://github.com/figuren-theater/ft-platform/pull/30))
+- Bump actions/cache from 3 to 4 ([#29](https://github.com/figuren-theater/ft-platform/pull/29))
 
 ## [3.2.1](https://github.com/figuren-theater/ft-platform/compare/3.2.0...3.2.1) - 2023-10-22
 
