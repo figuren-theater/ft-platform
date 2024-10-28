@@ -56,7 +56,7 @@ jobs:
       #     cp content/plugins/sqlite-object-cache/assets/drop-in/object-cache.php content/object-cache.php
 
       - name: Download artifact from dry-run-deploy job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: ft-platform-release
           
