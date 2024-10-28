@@ -92,3 +92,6 @@ jobs:
             # figuren-theater/ft-privacy/koko-analytics --> Error: Error: Server sent FIN packet unexpectedly ...
             # An empty file by (security) design
             **/koko-analytics/assets/dist/js/koko-analytics-script-test.js
+            # figuren-theater/ft-theater/gatherpress --> Error: Error: Server sent FIN packet unexpectedly ...
+            # EMPTY FILE
+            **/gatherpress/build/admin_style.js

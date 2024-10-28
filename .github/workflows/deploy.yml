@@ -17,51 +17,43 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      # - name: Checkout code
-      #   uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      # - name: Prepare auth Token
-      #   run: composer global config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+      - name: Prepare auth Token
+        run: composer global config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Get latest commit ID from ft-platform-collection
-      #   id: platform-collection
-      #   run: |
-      #     echo "commit_id={$(git ls-remote https://github.com/figuren-theater/ft-platform-collection.git refs/heads/main | awk '{ print $1 }')}" >> $GITHUB_OUTPUT
+      - name: Get latest commit ID from ft-platform-collection
+        id: platform-collection
+        run: |
+          echo "commit_id={$(git ls-remote https://github.com/figuren-theater/ft-platform-collection.git refs/heads/main | awk '{ print $1 }')}" >> $GITHUB_OUTPUT
 
-      # - name: Get Composer Cache Directory
-      #   id: composer-cache
-      #   run: |
-      #     echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-      # - uses: actions/cache@v4
-      #   with:
-      #     path: ${{ steps.composer-cache.outputs.dir }}
-      #     key: ${{ runner.os }}-composer-${{ github.sha }}-${{ steps.platform-collection.outputs.commit_id }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-composer-
-
-      # - name: Install composer dependencies
-      #   run: composer install --no-dev --prefer-dist --no-interaction
-      #   env:
-      #     COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Install all platform dependencies
-      #   run: composer require figuren-theater/ft-platform-collection --prefer-dist --no-interaction
-
-      # # Help moving files (which koodimoni/dropin-installer is not capable for, see #11)
-      # - name: Copy files (accompanying koodimoni)
-      #   run: |
-      #     cp content/mu-plugins/FT/ft-data/templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt vendor/rss-bridge/rss-bridge/whitelist.txt &&
-      #     cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/db-error.php content/db-error.php &&
-      #     cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php &&
-      #     cp content/plugins/sqlite-object-cache/assets/drop-in/object-cache.php content/object-cache.php
-
-      - name: Download artifact from dry-run-deploy job
-        uses: actions/download-artifact@v4
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v4
         with:
-          name: ft-platform-release
-          
-      - name: unzip artifact for deployment
-        run: unzip release.zip
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ github.sha }}-${{ steps.platform-collection.outputs.commit_id }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install composer dependencies
+        run: composer install --no-dev --prefer-dist --no-interaction
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install all platform dependencies
+        run: composer require figuren-theater/ft-platform-collection --prefer-dist --no-interaction
+
+      # Help moving files (which koodimoni/dropin-installer is not capable for, see #11)
+      - name: Copy files (accompanying koodimoni)
+        run: |
+          cp content/mu-plugins/FT/ft-data/templates/htdocs/vendor/rss-bridge/rss-bridge/whitelist.txt vendor/rss-bridge/rss-bridge/whitelist.txt &&
+          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/db-error.php content/db-error.php &&
+          cp content/mu-plugins/FT/ft-maintenance/templates/htdocs/wp-content/maintenance.php content/maintenance.php &&
+          cp content/plugins/sqlite-object-cache/assets/drop-in/object-cache.php content/object-cache.php
 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -92,3 +84,6 @@ jobs:
             # figuren-theater/ft-privacy/koko-analytics --> Error: Error: Server sent FIN packet unexpectedly ...
             # An empty file by (security) design
             **/koko-analytics/assets/dist/js/koko-analytics-script-test.js
+            # figuren-theater/ft-theater/gatherpress --> Error: Error: Server sent FIN packet unexpectedly ...
+            # EMPTY FILE
+            **/gatherpress/build/admin_style.js
