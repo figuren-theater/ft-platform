@@ -2,7 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.3.0...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-platform/compare/3.3.3...HEAD)
+
+## [3.3.3](https://github.com/figuren-theater/ft-platform/compare/3.3.0...3.3.3) - 2024-11-13
+
+Follow up for: https://github.com/figuren-theater/ft-platform-collection/releases/tag/0.3.3
+
+
+---
+
+- Save release as github artifact and re-use it for deployment ([#34](https://github.com/figuren-theater/ft-platform/pull/34))
 
 ## [3.3.0](https://github.com/figuren-theater/ft-platform/compare/3.2.1...3.3.0) - 2024-10-28
 
