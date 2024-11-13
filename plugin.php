@@ -11,7 +11,7 @@
  * Plugin Name:       figuren.theater | Platform
  * Plugin URI:        https://github.com/figuren-theater/ft-platform
  * Description:       The master-receipe of the WordPress platform for puppeteers figuren.theater
- * Version:           3.3.0
+ * Version:           3.3.3
  * Requires at least: 6.3
  * Requires PHP:      8.0
  * Author:            figuren.theater
