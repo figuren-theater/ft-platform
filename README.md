@@ -34,7 +34,7 @@
     composer require figuren-theater/ft-platform-collection
     ```
 3. Save the `.env.example` with all needed DB credentials, API keys, etc. as `.env` into the *new docroot*.
-4. Create a symlink from `/content/v` to `/vendor` on the production server.
+4. Create a symlink from `/content/v` to `/vendor` on the server.
 
 ## Structure
 - [ft-platform](https://github.com/figuren-theater/ft-platform/)
@@ -69,13 +69,13 @@
 ## Versioning
 
 We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
-available, see the [tags on this repository](/tags).
+available, see the [tags on this repository](https://github.com/figuren-theater/ft-platform/tags).
 
 ## Authors
 
   - **Carsten Bach** - *Provided idea & code* - [figuren.theater/crew](https://figuren.theater/crew/)
 
-See also the list of [contributors](/contributors)
+See also the list of [contributors](https://github.com/figuren-theater/ft-platform/contributors)
 who participated in this project.
 
 ## License
