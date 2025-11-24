@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Prepare auth Token
         run: composer global config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
